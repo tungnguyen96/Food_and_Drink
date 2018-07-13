@@ -7,3 +7,11 @@ user:
 product:
   length:
     name_min_length: 10
+    price_min: 1
+    quantity_min: 1
+feedback:
+  length:
+    subject_max_length: 100
+product_order:
+  length:
+    quantity_min: 1

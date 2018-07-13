@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2018_07_13_080724) do
   end
 
   create_table "feedbacks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "email", limit: 100
+    t.string "subject"
     t.text "detail"
     t.bigint "user_id"
     t.datetime "created_at", null: false

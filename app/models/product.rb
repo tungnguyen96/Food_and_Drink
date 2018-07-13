@@ -5,7 +5,11 @@ class Product < ApplicationRecord
 
   validates :name, presence: true,
     length: {minimum: Settings.product.length.name_min_length}
-  validates :price, presence: true
-  validates :quantity, presence: true
+  validates :price, presence: true,
+    length: {minimum: Settings.product.length.price_min}
+  validates :quantity, presence: true,
+    length: {minimum: Settings.product.length.quantity_min}
   validates :detail, presence: true
+  validates :number_ratting, presence: true
+  validates :ratting_mark, presence: true
 end
