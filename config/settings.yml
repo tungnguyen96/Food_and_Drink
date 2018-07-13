@@ -1,9 +1,26 @@
 user:
-  length:
-    name_max_length: 50
-    email_max_length: 100
-    password_min_length: 6
-
+  name:
+    maximum: 50
+  email:
+    maximum: 100
+  password:
+    minimum: 6
 product:
-  length:
-    name_min_length: 10
+  name:
+    minimum: 4
+  price:
+    minimum: 0
+  quantity:
+    minimum: 0
+feedback:
+  subject:
+    maximum: 100
+product_order:
+  quantity:
+    minimum: 0
+  total_price:
+    minimum: 0
+rating:
+  value:
+    minimum: 0
+    maximum: 6

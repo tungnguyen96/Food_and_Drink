@@ -5,8 +5,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.integer :price
       t.integer :quantity
       t.text :detail
-      t.integer :number_user_rate
-      t.integer :rating_mark
+      t.integer :rate_average
       t.references :category, foreign_key: true
 
       t.timestamps
