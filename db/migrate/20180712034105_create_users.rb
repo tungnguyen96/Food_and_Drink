@@ -4,7 +4,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :name, limit: 50
       t.string :email, limit: 100
       t.string :address
-      t.string :password, limit: 100
       t.boolean :admin, default: false
 
       t.timestamps
