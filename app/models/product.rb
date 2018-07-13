@@ -7,11 +7,15 @@ class Product < ApplicationRecord
   validates :name, presence: true,
     length: {minimum: Settings.product.name.minimum}
   validates :price, presence: true,
-    numericality: {greater_than: Settings.product.price.minimum,
-      only_integer: true}
+    numericality: {
+      greater_than: Settings.product.price.minimum,
+      only_integer: true
+    }
   validates :quantity, presence: true,
-    numericality: {greater_than: Settings.product.quantity.minimum,
-      only_integer: true}
+    numericality: {
+      greater_than: Settings.product.quantity.minimum,
+      only_integer: true
+    }
   validates :detail, presence: true
   validates :rate_average, presence: true
 end

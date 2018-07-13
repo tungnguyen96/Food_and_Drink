@@ -2,8 +2,11 @@ class Rating < ApplicationRecord
   belongs_to :user
   belongs_to :product
 
-  validates :value, presence: true,
-    numericality: {only_integer: true,
+  validates :value,
+    presence: true,
+    numericality: {
+      less_than: Settings.rating.value.maximum,
       greater_than: Settings.rating.value.minimum,
-      less_than: Settings.rating.value.maximum}
+      only_integer: true
+    }
 end
