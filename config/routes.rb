@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :account do
+    root "pages#home"
     resources :users
     resources :products
     resources :orders
