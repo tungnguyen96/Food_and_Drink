@@ -18,6 +18,8 @@ gem "jquery-rails"
 gem "faker", "~> 1.7.3"
 gem "kaminari"
 gem "paperclip", "~> 6.0.0"
+gem "config"
+gem "bcrypt", "3.1.12"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

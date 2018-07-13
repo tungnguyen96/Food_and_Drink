@@ -1,0 +1,9 @@
+user:
+  length:
+    name_max_length: 50
+    email_max_length: 100
+    password_min_length: 6
+
+product:
+  length:
+    name_min_length: 10

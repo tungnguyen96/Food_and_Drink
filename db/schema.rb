@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_12_035914) do
+ActiveRecord::Schema.define(version: 2018_07_13_080724) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 100
@@ -76,10 +76,11 @@ ActiveRecord::Schema.define(version: 2018_07_12_035914) do
     t.string "name", limit: 50
     t.string "email", limit: 100
     t.string "address"
-    t.string "password", limit: 100
     t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "feedbacks", "users"
