@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2018_07_13_080724) do
   end
 
   create_table "feedbacks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "email", limit: 100
+    t.string "subject"
     t.text "detail"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -53,23 +53,22 @@ ActiveRecord::Schema.define(version: 2018_07_13_080724) do
     t.integer "price"
     t.integer "quantity"
     t.text "detail"
-    t.integer "number_user_rate"
-    t.integer "rating_mark"
+    t.integer "rate_average"
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
-  create_table "rattings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "ratings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "value"
     t.text "content"
     t.bigint "user_id"
     t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_rattings_on_product_id"
-    t.index ["user_id"], name: "index_rattings_on_user_id"
+    t.index ["product_id"], name: "index_ratings_on_product_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -88,6 +87,6 @@ ActiveRecord::Schema.define(version: 2018_07_13_080724) do
   add_foreign_key "product_orders", "orders"
   add_foreign_key "product_orders", "products"
   add_foreign_key "products", "categories"
-  add_foreign_key "rattings", "products"
-  add_foreign_key "rattings", "users"
+  add_foreign_key "ratings", "products"
+  add_foreign_key "ratings", "users"
 end
