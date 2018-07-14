@@ -3,6 +3,6 @@ class ProductOrder < ApplicationRecord
   belongs_to :product
 
   validates :quantity, presence: true,
-    length: {minimum: Settings.product_order.length.quantity_min}
-  validates :total_price, presence: true
+    numericality: {greater_than: Settings.product_order.quantity.minimum,only_integer: true}
+  validates :total_price, presence: true, numericality: {greater_than: Settings.product_order.total_price.minimum, only_integer: true}
 end
