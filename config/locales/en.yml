@@ -1,5 +1,6 @@
 en:
   user: "User is not exit!"
+  
   application:
     admin_nav:
       name: "Foods and Drinks"
@@ -10,6 +11,7 @@ en:
       order: "Orders"
       product: "Products"
       user: "Users"
+
     category:
       shop: "Shop Name"
       food: "Food"
@@ -17,23 +19,34 @@ en:
       category1: "Category 1"
       category2: "Category 2"
       category3: "Category 3"
+      
     header:
       food: "Food and Drink"
       log: "Log in"
       sign: "Sign up"
+      home: "Home"
+      logout: "Log out"
+      
     footer:
       this: "This is footer!"
+
   layouts:
     admin:
       title: "Foods & Drinks"
+
   pages:
     home:
       home: "Home"
+      
   account:
     users:
       new:
         sign: "Sign up"
         pass_con: "Password confirmation"
+
+      show:
+        user: "User infomation"
+        usernot: "User not found!"
       
       create:
         account: "Account is created!"
@@ -41,6 +54,17 @@ en:
     shared:
       error_messages:
         the: "The form contains"
+
+    sessions:
+      new:
+        log: "Log in"
+        sign: "Sign up now!"
+        new: "New user? "
+
+      create:
+        hi: "Hi!"
+        email: "Email or Password incorrect!"
+
   admin:
     users:
       users_table:
@@ -49,3 +73,13 @@ en:
         address: "Address"
         delete: "Delete"
         confirm: "Are you sure?"
+
+    sessions:
+      create:
+        email: "Email or Password incorrect!"
+        hi: "Hi!"
+        
+      new:
+        log: "Log in"
+        new: "New user? "
+        sign: "Sign up now!"
