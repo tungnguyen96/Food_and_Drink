@@ -4,7 +4,8 @@ en:
       food: "Food and Drink"
       log: "Log in"
       sign: "Sign up"
-    
+    admin:
+      title: "Foods & Drinks"
     category:
       shop: "Shop Name"
       food: "Food"
@@ -12,14 +13,11 @@ en:
       category1: "Category 1"
       category2: "Category 2"
       category3: "Category 3"
-
     footer:
       this: "This is footer!"
-
   pages:
     home:
       home: "Home"
-
   account:
     users:
       new:
@@ -32,3 +30,20 @@ en:
     shared:
       error_messages:
         the: "The form contains"
+    admin_nav:
+      name: "Foods and Drinks"
+      home: "Home"
+      log_out: "Sign out"
+      dashboard: "Dashboard"
+      cate: "Categories"
+      order: "Orders"
+      product: "Products"
+      user: "Users"
+  admin:
+    users:
+      users_table:
+        name: "Name"
+        email: "Email"
+        address: "Address"
+        delete: "Delete"
+        confirm: "Are you sure?"
