@@ -1,7 +1,7 @@
 class CreateFeedbacks < ActiveRecord::Migration[5.2]
   def change
     create_table :feedbacks do |t|
-      t.string :email, limit: 100
+      t.string :subject
       t.text :detail
       t.references :user, foreign_key: true
 
