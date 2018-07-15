@@ -30,4 +30,19 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  layouts:
+    admin_nav:
+      name: "Foods and Drinks"
+      home: "Home"
+      log_out: "Sign out"
+      dashboard: "Dashboard"
+      cate: "Categories"
+      order: "Orders"
+      product: "Products"
+      user: "Users"
+  admin:
+    users:
+      users_table:
+        name: "Name"
+        email: "Email"
+        address: "Address"
