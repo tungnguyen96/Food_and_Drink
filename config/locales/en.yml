@@ -19,3 +19,16 @@ en:
   pages:
     home:
       home: "Home"
+
+  account:
+    users:
+      new:
+        sign: "Sign up"
+        pass_con: "Password confirmation"
+      
+      create:
+        account: "Account is created!"
+      
+    shared:
+      error_messages:
+        the: "The form contains"
