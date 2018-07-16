@@ -1,0 +1,19 @@
+<div class="nav-bar">
+  <%= link_to  t(".name"), root_path %>
+  <ul class="nav justify-content-end">
+    <li class="nav-item">
+      <%= link_to  t(".home"), root_path %>
+    </li>
+    <li class="nav-item">
+      <%= link_to  t(".log_out"), "#" %>
+    </li>
+  </ul>
+</div>
+<div class="ver-nav">
+  <nav class="nav flex-column">
+    <%= link_to  t(".cate"), "#" %>
+    <%= link_to  t(".order"), "#" %>
+    <%= link_to  t(".product"), "#" %>
+    <%= link_to  t(".user"), admin_users_path %>
+  </nav>
+</div>
