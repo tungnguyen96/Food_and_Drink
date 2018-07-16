@@ -1,33 +1,52 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  user: "User is not exit!"
+  application:
+    admin_nav:
+      name: "Foods and Drinks"
+      home: "Home"
+      log_out: "Sign out"
+      dashboard: "Dashboard"
+      cate: "Categories"
+      order: "Orders"
+      product: "Products"
+      user: "Users"
+    category:
+      shop: "Shop Name"
+      food: "Food"
+      drink: "Drink"
+      category1: "Category 1"
+      category2: "Category 2"
+      category3: "Category 3"
+    header:
+      food: "Food and Drink"
+      log: "Log in"
+      sign: "Sign up"
+    footer:
+      this: "This is footer!"
+  layouts:
+    admin:
+      title: "Foods & Drinks"
+  pages:
+    home:
+      home: "Home"
+  account:
+    users:
+      new:
+        sign: "Sign up"
+        pass_con: "Password confirmation"
+      
+      create:
+        account: "Account is created!"
+      
+    shared:
+      error_messages:
+        the: "The form contains"
+
+  admin:
+    users:
+      users_table:
+        name: "Name"
+        email: "Email"
+        address: "Address"
+        delete: "Delete"
+        confirm: "Are you sure?"

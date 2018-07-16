@@ -1,3 +1,17 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root "pages#home"
+  namespace :account do
+    get "/signup", to: "users#new"
+    post "/signup", to: "users#create"
+    resources :sessions, only: %i(new create destroy)
+    resources :users, only: %i(new create show edit update)
+  end
+
+  namespace :admin do
+    root "dashboard#home"
+    resources :users, only: %i(index destroy)
+    resources :products, only: %i(index new create edit update destroy)
+    resources :categories, only: %i(index new create edit update destroy)
+    resources :orders, only: %i(index destroy)
+  end
 end

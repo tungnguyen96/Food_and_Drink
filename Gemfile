@@ -23,10 +23,6 @@ gem "bcrypt", "3.1.12"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
-  gem "rspec-rails"
-  gem "shoulda-matchers"
-  gem "factory_bot_rails"
-  gem "sqlite3"
 end
 
 group :development do
