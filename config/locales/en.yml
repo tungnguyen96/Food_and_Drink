@@ -41,7 +41,6 @@ en:
     shared:
       error_messages:
         the: "The form contains"
-
   admin:
     users:
       users_table:
