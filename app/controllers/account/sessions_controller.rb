@@ -1,5 +1,5 @@
 module Account
-  class SessionsController < AppicationController
+  class SessionsController < ApplicationController
     # create a form to create new session
     def new
     end
