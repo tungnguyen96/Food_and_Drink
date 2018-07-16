@@ -1,7 +1,9 @@
 module Admin
   class CategoriesController < BaseController
     
-    def index; end
+    def index
+      @category = Category.all
+    end
 
     def new; end
 
