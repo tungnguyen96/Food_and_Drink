@@ -1,0 +1,20 @@
+<%= provide :title, t(".title") %>
+
+<h1><%= t ".title" %></h1>
+<table>
+  <tr>
+    <td>
+      <%= image_tag("https://findicons.com/files/icons/2118/nuvola/128/personal.png",
+        alt: @user.name) %>
+    </td>
+    <td>
+      <%= t ".username" %><%= @user.name %><br>
+      <%= t ".address" %><%= @user.address %><br>
+      <%= t ".email" %><%= @user.email %>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><%= link_to t(".change"), edit_account_user_path(@user) %>
+  </tr>
+</table>

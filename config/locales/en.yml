@@ -1,5 +1,6 @@
 en:
   user: "User is not exit!"
+  error1: "Please log in!"
   application:
     admin_nav:
       name: "Foods and Drinks"
@@ -21,8 +22,7 @@ en:
       food: "Food and Drink"
       log: "Log in"
       sign: "Sign up"
-    footer:
-      this: "This is footer!"
+      home: "Home"
   layouts:
     admin:
       title: "Foods & Drinks"
@@ -36,6 +36,22 @@ en:
         pass_con: "Password confirmation"
       create:
         account: "Account is created!"
+      show:
+        title: "User Information"
+        error: "User not found!"
+        change: "Change"
+        username: "User name: "
+        address: "Address: "
+        email: "Email: "
+      edit:
+        title: "Edit user"
+        content: "Update your profile"
+        newpass: "New password"
+        pass_con: "Password confirmation"
+        error: "User not found!"
+        submit: "Save changes"
+      update:
+        notice: "Profile updated!"
     shared:
       error_messages:
         the: "The form contains"
