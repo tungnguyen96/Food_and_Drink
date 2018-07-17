@@ -34,13 +34,19 @@ en:
       new:
         sign: "Sign up"
         pass_con: "Password confirmation"
-      
       create:
         account: "Account is created!"
-      
     shared:
       error_messages:
         the: "The form contains"
+    sessions:
+      new:
+        log: "Log in"
+        sign: "Sign up now!"
+        new: "New user? "
+      create:
+        welcome: "Welcome to my website"
+        error: "Email or Password incorrect!"
   admin:
     users:
       users_table:
