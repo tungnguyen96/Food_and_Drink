@@ -10,6 +10,6 @@ module Admin
 
     def update; end
 
-    def destrou; end
+    def destroy; end
   end
 end
