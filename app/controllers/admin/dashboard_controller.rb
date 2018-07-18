@@ -1,6 +1,5 @@
 module Admin
   class DashboardController < BaseController
-    def home
-    end
+    def home; end
   end
 end

@@ -15,7 +15,7 @@
         </li>
         <% if logged_in? %>
           <li class="nav-item">
-            <%= link_to @current_user.name, "#", class: "nav-link" %>
+            <%= link_to @current_user.name, account_user_path(@current_user), class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to t(".logout"), account_session_path(@current_user), method: :delete, class: "nav-link" %>
