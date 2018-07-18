@@ -1,6 +1,7 @@
 en:
   user: "User is not exit!"
   error1: "Please log in!"
+  not_found: "Category and products not found!"
   application:
     admin_nav:
       name: "Foods and Drinks"
@@ -26,9 +27,6 @@ en:
   layouts:
     admin:
       title: "Foods & Drinks"
-  pages:
-    home:
-      home: "Home"
   account:
     users:
       new:
@@ -71,3 +69,9 @@ en:
         address: "Address"
         delete: "Delete"
         confirm: "Are you sure?"
+  products:
+    index:
+      title: "Products"
+      cart: "Add to Cart"
+    product:
+      cart: "Add to Cart"
