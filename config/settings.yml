@@ -12,6 +12,7 @@ product:
     minimum: 0
   quantity:
     minimum: 0
+  pagination: 6
 feedback:
   subject:
     maximum: 100

@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/stympy/faker.git
+  revision: ecf0c19f209356f173017b171085f98427b93194
+  specs:
+    faker (1.9.1)
+      i18n (>= 0.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -100,8 +107,6 @@ GEM
       dry-types (~> 0.13.1)
     erubi (1.7.1)
     execjs (2.7.0)
-    faker (1.7.3)
-      i18n (~> 0.5)
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -259,7 +264,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   config
-  faker (~> 1.7.3)
+  faker!
   jbuilder (~> 2.5)
   jquery-rails
   kaminari
