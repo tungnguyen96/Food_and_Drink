@@ -110,7 +110,23 @@ en:
       confirmpurchased: "Purchased?"
       purchased: "Purchased"
       price: "Price"
+      history: "History purchase"
     update:
       notice: "Updated!"
     destroy:
       notice: "Delete failed!"
+      history: "History purchase"
+  product_orders:
+    show:
+      title: "Detail history purchase"
+      product: "Product"
+      price: "Price x Quantity"
+      total: "Total price"
+      history: "History purchase"
+  orders:
+    show:
+      history: "History purchase"
+      date: "Date"
+      detail: "Detail"
+    create:
+      purchased: "Purchased!"

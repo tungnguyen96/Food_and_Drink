@@ -1,4 +1,10 @@
 class OrdersController < ApplicationController
+  before_action :check_login
+
+  def show
+    @order = current_user.orders
+  end
+
   def create
     @order = Order.new purchased: true, user: current_user
     @order.save
