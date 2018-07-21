@@ -25,4 +25,11 @@ class Product < ApplicationRecord
   scope :filter_product, ->(sort_type, sort_order){
     order sort_type || DEFAULT_SORT_TYPE => sort_order || DEFAULT_SORT_ORDER
   }
+  class << self
+    def update_quantity add_quantity, sub_quantity, product_id
+      product = Product.find_by id: product_id
+      quantity = product.quantity + add_quantity - sub_quantity
+      product.update_column :quantity, quantity
+    end
+  end
 end

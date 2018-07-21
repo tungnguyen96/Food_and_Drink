@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :ratings
   has_many :orders
   has_many :feedbacks
+  has_many :carts
 
   validates :name, presence: true,
     length: {maximum: Settings.user.name.maximum}

@@ -28,19 +28,29 @@
 </div>
 <div class="row">
   <% @products.each do |product| %>
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <div class="card-body">
-          <h2 class="card-title"><%= product.name %></h2>
-          <p class="card-text"><%= product.detail %></p>
-          <div><%= t ".price" %><%= product.price %></div>
-          <div><%= t ".rate" %><%= product.rate_average %></div>
-        </div>
-        <div class="card-footer">
-          <%= link_to  t(".cart"), "#", class: "btn btn-primary" %>
+    <% if product.quantity > 0 %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h2 class="card-title"><%= product.name %></h2>
+            <p class="card-text"><%= product.detail %></p>
+          </div>
+          <div class="card-footer">
+            <%= form_for(:cart, url: carts_path) do |f| %>
+              <%= hidden_field_tag :product_id, product.id %>
+              <table>
+                <tr>
+                  <td><%= number_field_tag :quantity, 1, class: "form-control",
+                    min: 1, max: product.quantity %></td>
+                  <td></td>
+                  <td><%= f.submit t(".cart"), class: "btn btn-success" %></td>
+                </tr>
+              </table>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
 <div class="pagination justify-content-center">

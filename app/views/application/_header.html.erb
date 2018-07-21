@@ -15,6 +15,9 @@
         </li>
         <% if logged_in? %>
           <li class="nav-item">
+            <%= link_to t(".cart"), cart_path(@current_user), class: "nav-link" %>
+          </li>
+          <li class="nav-item">
             <%= link_to @current_user.name, account_user_path(@current_user), class: "nav-link" %>
           </li>
           <li class="nav-item">
