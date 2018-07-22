@@ -2,6 +2,14 @@ en:
   user: "User is not exit!"
   error1: "Please log in!"
   not_found: "Category and products not found!"
+  no_product: "No products found!"
+  views:
+    pagination:
+      first: "« first"
+      last: "last »"
+      previous: "‹ prev"
+      next: "next ›"
+      truncate: "…"
   application:
     admin_nav:
       name: "Foods and Drinks"
@@ -74,4 +82,6 @@ en:
       title: "Products"
       cart: "Add to Cart"
     product:
+      cart: "Add to Cart"
+    show:
       cart: "Add to Cart"
