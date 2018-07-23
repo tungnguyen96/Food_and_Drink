@@ -5,4 +5,5 @@ class Category < ApplicationRecord
   belongs_to :parent, class_name: Category.name, optional: true
   accepts_nested_attributes_for :products
   validates :name, presence: true, uniqueness: {case_sensitive: false}
+  scope :parent_category, ->{where parent_id: nil}
 end

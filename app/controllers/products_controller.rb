@@ -2,8 +2,9 @@ class ProductsController < ApplicationController
   before_action :load_product, only: :show
 
   def index
-    @products = Product.all.page(params[:page])
-      .per(Settings.product.pagination)
+    @products = Product
+      .filter_product(params[:sort], params[:order])
+      .page(params[:page]).per Settings.product.pagination
   end
 
   def show; end
