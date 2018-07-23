@@ -81,6 +81,14 @@ en:
     index:
       title: "Products"
       cart: "Add to Cart"
+      filter: "Product Filter"
+      name_desc: "Name Z-A"
+      price_asc: "Price A-Z"
+      price_desc: "Price Z-A"
+      rate_asc: "Rating A-Z"
+      rate_desc: "Rating Z-A"
+      price: "Price: "
+      rate: "Rate: "
     product:
       cart: "Add to Cart"
     show:
