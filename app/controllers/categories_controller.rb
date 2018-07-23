@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   before_action :load_category, only: :show
 
   def index
-    @categories = Category.where(parent_id: nil)
+    @categories = Category.parent_category
   end
   
   def show
