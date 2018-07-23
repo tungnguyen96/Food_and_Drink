@@ -32,6 +32,7 @@ en:
       log: "Log in"
       sign: "Sign up"
       home: "Home"
+      cart: "Cart"
   layouts:
     admin:
       title: "Foods & Drinks"
@@ -93,3 +94,23 @@ en:
       cart: "Add to Cart"
     show:
       cart: "Add to Cart"
+  orders:
+    create:
+      purchased: "Purchased!"
+  carts:
+    show:
+      title: "Your cart"
+      product: "Product"
+      quantity: "Quantity"
+      update: "Update"
+      delete: "Delete"
+      total: "Total"
+      shopping: "Continue shopping"
+      confirmdelete: "Delete?"
+      confirmpurchased: "Purchased?"
+      purchased: "Purchased"
+      price: "Price"
+    update:
+      notice: "Updated!"
+    destroy:
+      notice: "Delete failed!"
