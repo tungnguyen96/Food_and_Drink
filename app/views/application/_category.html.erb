@@ -1,21 +1,13 @@
-<div class="col-lg-3">
-  <h1 class="my-4"><%= t ".shop" %></h1>
-  <div class="list-group">
-    <div class="dropdown">
-      <button class="dropbtn"><%= t ".food" %></button>
-        <div class="dropdown-content">
-          <%= link_to t(".category1"), "#" %>
-          <%= link_to t(".category2"), "#" %>
-          <%= link_to t(".category3"), "#" %>
-        </div>
-    </div>
-    <div class="dropdown">
-      <button class="dropbtn"><%= t ".drink" %></button>
-        <div class="dropdown-content">
-          <%= link_to t(".category1"), "#" %>
-          <%= link_to t(".category2"), "#" %>
-          <%= link_to t(".category3"), "#" %>
-        </div>
-    </div>
-  </div>
-</div>
+<li class="dropdown">
+  <%= link_to t(".categories"), "#", class: "btn btn-primary" %>
+  <ul class="dropdown-menu">
+    <li>
+      <%= link_to t(".food"),
+        category_path(1) %>
+    </li>
+    <li>
+      <%= link_to t(".drink"),
+        category_path(2) %>
+    </li>
+  </ul>
+</li>

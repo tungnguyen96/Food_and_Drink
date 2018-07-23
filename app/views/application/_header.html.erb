@@ -13,6 +13,7 @@
         <li class="nav-item">
           <%= link_to t(".home"), root_path, class: "nav-link" %>
         </li>
+        <%= render  "category" %>
         <% if logged_in? %>
           <li class="nav-item">
             <%= link_to @current_user.name, account_user_path(@current_user), class: "nav-link" %>

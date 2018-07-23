@@ -1,6 +1,6 @@
 <%= provide :title, t(".title") %>
 <div>
-  <li class="dropdown">
+  <div class="dropdown">
     <%= link_to t(".filter"), "#", class: "btn btn-primary" %>
     <ul class="dropdown-menu">
       <li>
@@ -24,15 +24,15 @@
           products_path(sort: :rate_average, order: :desc) %>
       </li>
     </ul>
-  </li>
+  </div>
 </div>
 <div class="row">
   <% @products.each do |product| %>
     <div class="col-md-4 mb-4">
       <div class="card h-100">
         <div class="card-body">
+          <%= image_tag  "food-exam.jpg", class: "card-img-top" %>
           <h2 class="card-title"><%= product.name %></h2>
-          <p class="card-text"><%= product.detail %></p>
           <div><%= t ".price" %><%= product.price %></div>
           <div><%= t ".rate" %><%= product.rate_average %></div>
         </div>
