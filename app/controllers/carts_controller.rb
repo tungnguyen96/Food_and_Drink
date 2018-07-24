@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   before_action :check_login
-  before_action :find_cart, only: [:update, :destroy]
+  before_action :is_admin?, only: [:create, :show, :update, :destroy]
 
   def show
     @cart = current_user.carts
@@ -16,13 +16,11 @@ class CartsController < ApplicationController
       cart = current_user.carts.build cart_params
       cart.save
     end
-    Product.update_quantity 0, params[:quantity].to_i, params[:product_id]
     redirect_to_back
   end
 
   def update
     return unless @cart
-    Product.update_quantity @cart.quantity, params[:quantity].to_i,
       @cart.product.id
     @cart.update_column :quantity, params[:quantity].to_i
     flash[:success] = t ".notice"
@@ -32,7 +30,6 @@ class CartsController < ApplicationController
   def destroy
     return unless @cart
     if @cart.destroy
-      Product.update_quantity @cart.quantity, 0, @cart.product.id
     else
       flash[:danger] = t ".notice"
     end

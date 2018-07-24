@@ -4,36 +4,74 @@
 <table class="table table-hover">
   <tr>
     <th><%= t ".product" %></th>
-    <th><%= t ".quantity" %></th>
     <th><%= t ".price" %></th>
+    <th><%= t ".quantity" %></th>
+    <th></th>
     <th><%= t ".update" %></th>
     <th><%= t ".delete" %></th>
   </tr>
   <% @cart.each do |cart| %>
-    <tr>
-      <td>
-        <a href="#"><%= cart.product.name %></a> 
-      </td>
-      <%= form_for :cart, url: cart_path(cart), method: :patch do |f| %>
+    <% if cart.product.present? %>
+      <tr>
         <td>
-          <%= number_field_tag :quantity, cart.quantity, class: "form-control",
-            min: 1, max: cart.product.quantity + cart.quantity %>
-          <%= hidden_field_tag :cart_id, cart.id %>
+          <%= link_to cart.product.name, product_path(cart.product) %>
         </td>
+        <%= form_for :cart, url: cart_path(cart), method: :patch do |f| %>
+          <td>
+            $<%= cart.product.price %> x
+            <%= hidden_field_tag :cart_id, cart.id %>
+          </td>
+          <% if cart.product.quantity == 0 %>
+            <td>
+              <%= label_tag :quantity, 0, class: "form-control",
+                disabled: true %>
+            </td>
+            <td class="table-danger"><%= t ".out" %></td>
+            <td></td>
+          <% elsif cart.product.quantity < cart.quantity %>
+            <td>
+              <%= number_field_tag :quantity, cart.product.quantity, class: "form-control",
+                min: 1, max: cart.product.quantity %>
+              <%= hidden_field_tag :cart_id, cart.id %>
+            </td>
+            <td class="table-danger">
+              <%= t ".only" %><%= cart.product.quantity %><%= t ".edit" %><%= cart.quantity %>
+            </td>
+            <td>
+              <%= f.button t(".update"), type: "submit", class: "btn btn-success" %>
+            </td>
+          <% else %>
+            <td>
+              <%= number_field_tag :quantity, cart.quantity, class: "form-control",
+                min: 1, max: cart.product.quantity %>
+              <%= hidden_field_tag :cart_id, cart.id %>
+            </td>
+            <td></td>
+            <td>
+              <%= f.button t(".update"), type: "submit", class: "btn btn-success" %>
+            </td>
+          <% end %>
+        <% end %>
         <td>
-          $<%= cart.quantity * cart.product.price %>
+          <%= link_to t(".delete"), cart, method: :delete,
+            data: {confirm: t(".confirmdelete")}, class: "btn btn-danger" %>
         </td>
-        <td>
-          <%= f.button t(".update"), type: "submit", class: "btn btn-success" %>
-        </td>
-      <% end %>
-      <td>
-        <%= link_to t(".delete"), cart, method: :delete,
+      </tr>
+    <% else %>
+      <tr>
+        <td><%= cart.product_id %></td>
+        <td></td>
+        <td></td>
+        <td class="table-danger"><%= t ".productdel" %></td>
+        <td></td>
+        <td><%= link_to t(".delete"), cart, method: :delete,
           data: {confirm: t(".confirmdelete")}, class: "btn btn-danger" %>
-      </td>
-    </tr>
+        </td>
+      </tr>
+    <% end %>
   <% end %>
   <tr>
+    <td></td>
     <td></td>
     <td></td>
     <td></td>
@@ -41,6 +79,7 @@
     <td><strong>$<%= @total_price %></strong></td>
   </tr>
   <tr>
+    <td></td>
     <td></td>
     <td></td>
     <td></td>
