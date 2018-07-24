@@ -1,13 +1,13 @@
 <div>
   <% @categories.each do |category| %>
-    <li class="dropdown"> 
+    <button class="dropdown btn btn-infor"> 
       <%= link_to  category.name, category, class: "dropdown-toggle"%>
       <ul class="dropdown-menu">
       <% category.children.each do |child| %>
         <li><%= link_to child.name, category_path(child.id) %></li>
       <% end %>
       </ul>
-    </li>
+    </button>
   <% end %>
 </div>
 

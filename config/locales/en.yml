@@ -5,6 +5,7 @@ en:
   no_product: "No products found!"
   rate_success: "Rate success!"
   rate_fail: "Rate fail!"
+  no_start: "Please number of start that you want rate!"
   views:
     pagination:
       first: "« first"
