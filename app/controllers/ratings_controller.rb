@@ -3,9 +3,10 @@ class RatingsController < ApplicationController
   before_action :load_product
 
   def create
-    @rate = @product.ratings.build rating_params.merge user: current_user
+    return flash[:danger] = "Noooo" if params[:rating][:value].nil?
+    @product.rate(params[:rating][:value], current_user)
 
-    if @rate.save
+    if @product.save
       flash[:success] = t :rate_success
     else
       flash[:danger] = t :rate_fail
@@ -16,16 +17,8 @@ class RatingsController < ApplicationController
 
   private
 
-  def ratings_of_current_product
-    @product.ratings  
-  end
-
   def load_product
     @product ||= Product.find_by(id: params[:rating][:product_id])
     redirect_to root_path, alert: t(:no_product) unless @product
-  end
- 
-  def rating_params
-    params.require(:rating).permit :value
   end
 end
