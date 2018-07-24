@@ -1,0 +1,22 @@
+<% provide :title, t(".title") %>
+
+<h1><%= t ".title" %></h1>
+<table class="table table-hover">
+  <tr>
+    <th><%= t ".product" %></th>
+    <th><%= t ".price" %></th>
+  </tr>
+  <% @product_orders.each do |po| %>
+    <tr>
+      <td><%= po.product.name %></td>
+      <td>$<%= po.product.price %> x <%= po.quantity %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <td><strong><%= t ".total" %></strong></td>
+    <td><strong>$<%= @total_price %></strong></td>
+  </tr>
+  <tr>
+    <td><%= link_to t(".history"), order_path(current_user) %></td>
+  </tr>
+</table>
