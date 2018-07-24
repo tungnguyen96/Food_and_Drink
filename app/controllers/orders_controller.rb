@@ -12,11 +12,10 @@ class OrdersController < ApplicationController
     $i = 0
     $j = carts.count
     carts.each do |c|
-      unless c.product.present?
+      if c.product.blank?
         $i += 1
         next
-      end
-      if c.product.quantity == 0
+      elsif c.product.quantity == 0
         $i += 1
         next
       elsif c.product.quantity < c.quantity
