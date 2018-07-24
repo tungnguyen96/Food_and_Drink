@@ -1,11 +1,40 @@
 
 <div class="card mt-4">
-  <img class="card-img-top" src="http://placehold.it/900x300" alt="">
+  <%= image_tag  "images.jpeg", class:"card-img-top" %>
   <div class="card-body">
-    <h3 class="card-title"><%= @product.name %></h3>
-    <h4>$<%= @product.price %></h4>
-    <p class="card-text"><%= @product.detail%></p>
-    <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-    <%= link_to  t(".cart"), "#", class: "btn btn-primary" %>  
+    <div>
+      <h3 class="card-title"><%= @product.name %></h3>
+      <h4>$<%= @product.price %></h4>
+      <p class="card-text"><%= @product.detail%></p>
+      <span class="text-warning"><%= @product.rate_average %>&#9733;</span>
+    </div>
+    <div class="radio-inline">
+      <%= form_for :rating, url: ratings_path, class: "form-control" do |f| %>
+        <div class="form-check">
+          <%= f.radio_button :value, 1, class: "form-check-input" %>
+          <span class="text-warning">&#9733;</span>
+        </div>
+        <div class="form-check">
+          <%= f.radio_button :value, 2, class: "form-check-input" %>
+          <span class="text-warning">&#9733;&#9733;</span>
+        </div>
+        <div class="form-check">
+          <%= f.radio_button :value, 3, class: "form-check-input" %>
+          <span class="text-warning">&#9733;&#9733;&#9733;</span>
+        </div>
+        <div class="form-check">
+          <%= f.radio_button :value, 4, class: "form-check-input" %>
+          <span class="text-warning">&#9733;&#9733;&#9733;&#9733;</span>
+        </div>
+        <div class="form-check">
+          <%= f.radio_button :value, 5, class: "form-check-input" %>
+          <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        </div>
+        <%= f.hidden_field :product_id, value: @product.id %>
+        <div>
+          <%= f.button t(".rate"), class: "btn btn-primary", type: "submit" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 <div>

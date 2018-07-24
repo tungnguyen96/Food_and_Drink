@@ -3,6 +3,8 @@ en:
   error1: "Please log in!"
   not_found: "Category and products not found!"
   no_product: "No products found!"
+  rate_success: "Rate success!"
+  rate_fail: "Rate fail!"
   views:
     pagination:
       first: "« first"
@@ -94,9 +96,7 @@ en:
       cart: "Add to Cart"
     show:
       cart: "Add to Cart"
-  orders:
-    create:
-      purchased: "Purchased!"
+      rate: "Rate"
   carts:
     show:
       title: "Your cart"

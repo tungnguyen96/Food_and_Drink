@@ -12,6 +12,9 @@ product:
     minimum: 0
   quantity:
     minimum: 0
+  rate_average:
+    minimum: 1
+    maximum: 5
   pagination: 6
 feedback:
   subject:
