@@ -7,4 +7,10 @@ class ApplicationController < ActionController::Base
     flash[:danger] = t :error1
     redirect_to root_path
   end
+
+  def require_login
+    return if logged_in?
+    flash[:danger] = t :error1
+    redirect_to new_account_session_path
+  end
 end

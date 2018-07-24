@@ -32,8 +32,17 @@
       <div class="col-md-4 mb-4">
         <div class="card h-100">
           <div class="card-body">
-            <h2 class="card-title"><%= product.name %></h2>
-            <p class="card-text"><%= product.detail %></p>
+            <%= link_to image_tag("download.jpeg", width: "200"),
+              product_path(product), class:"card-img-top" %>
+            <h2 class="card-title">
+              <%= link_to  product.name, product_path(product) %>
+            </h2>
+            <div>
+              Price: $<%= product.price %>
+            </div>
+            <div>
+              Quantity: <%= product.quantity %>
+            </div>
           </div>
           <div class="card-footer">
             <%= form_for(:cart, url: carts_path) do |f| %>

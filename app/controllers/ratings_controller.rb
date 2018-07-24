@@ -1,25 +1,31 @@
 class RatingsController < ApplicationController
-  before_action :current_product
   before_action :require_login
+  before_action :load_product
 
   def create
-    # @rate = Rate.new value: params[:value]
-    #   content: params[:content],
-    #   user_id: current_user.id,
-    #   product_id: current_product.id
+    @rate = @product.ratings.build rating_params.merge user: current_user
 
-    # total_rate = ratings_of_current_product.sum(&:value) + params[:value]
-    # rate_count = ratings_of_current_product.count
+    if @rate.save
+      flash[:success] = t :rate_success
+    else
+      flash[:danger] = t :rate_fail
+    end
 
-    # current_product.update rate_average: total_rate / rate_count
-
-    # current_product.rate(value: params[:value])
-    # render "products/show"
+    redirect_to @product
   end
 
   private
 
   def ratings_of_current_product
-    current_product.rattings
+    @product.ratings  
+  end
+
+  def load_product
+    @product ||= Product.find_by(id: params[:rating][:product_id])
+    redirect_to root_path, alert: t(:no_product) unless @product
+  end
+ 
+  def rating_params
+    params.require(:rating).permit :value
   end
 end
