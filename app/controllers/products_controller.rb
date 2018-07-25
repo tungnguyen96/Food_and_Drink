@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :load_product, only: :show
 
   def index
-    @products = Product
+    @products = Product.where("quantity > 0")
       .filter_product(params[:sort], params[:order])
       .page(params[:page]).per Settings.product.pagination
   end

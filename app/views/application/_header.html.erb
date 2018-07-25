@@ -13,6 +13,7 @@
         <li class="nav-item">
           <%= link_to t(".home"), root_path, class: "nav-link" %>
         </li>
+          <%= link_to  "Categories", categories_path, class: "nav-link" %>
         <% if logged_in? %>
           <li class="nav-item">
             <%= link_to t(".cart"), cart_path(@current_user), class: "nav-link" %>
