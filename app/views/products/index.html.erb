@@ -1,31 +1,37 @@
 <%= provide :title, t(".title") %>
-<div>
-  <li class="dropdown">
-    <%= link_to t(".filter"), "#", class: "btn btn-primary" %>
-    <ul class="dropdown-menu">
-      <li>
-        <%= link_to t(".name_desc"),
-          products_path(sort: :name, order: :desc) %>
-      </li>
-      <li>
-        <%= link_to t(".price_asc"),
-          products_path(sort: :price, order: :asc) %>
-      </li>
-      <li>
-        <%= link_to t(".price_desc"),
-          products_path(sort: :price, order: :desc) %>
-      </li>
-      <li>
-        <%= link_to t(".rate_asc"),
-          products_path(sort: :rate_average, order: :asc) %>
-      </li>
-      <li>
-        <%= link_to t(".rate_desc"),
-          products_path(sort: :rate_average, order: :desc) %>
-      </li>
-    </ul>
-  </li>
-</div>
+<li class="dropdown dropright">
+  <button type="button" class="btn btn-success dropdown-toggle"
+    data-toggle="dropdown">
+    <%= t(".filter") %>
+  </button>
+  <ul class="dropdown-menu">
+    <li>
+      <%= link_to t(".name_desc"),
+        products_path(sort: :name, order: :desc),
+        class:"dropdown-item success" %>
+    </li>
+    <li>
+      <%= link_to t(".price_asc"),
+        products_path(sort: :price, order: :asc),
+        class:"dropdown-item" %>
+    </li>
+    <li>
+      <%= link_to t(".price_desc"),
+        products_path(sort: :price, order: :desc),
+        class:"dropdown-item" %>
+    </li>
+    <li>
+      <%= link_to t(".rate_asc"),
+        products_path(sort: :rate_average, order: :asc),
+        class:"dropdown-item" %>
+    </li>
+    <li>
+      <%= link_to t(".rate_desc"),
+        products_path(sort: :rate_average, order: :desc),
+        class:"dropdown-item" %>
+    </li>
+  </ul>
+</li>
 <div class="row">
   <% @products.each do |product| %>
     <% if product.quantity > 0 %>

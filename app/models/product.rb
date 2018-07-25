@@ -4,7 +4,7 @@ class Product < ApplicationRecord
 
   has_many :product_orders
   has_many :ratings
-  has_many :orders, through: :product_orders
+  has_many :orders, through: :product_orders, dependent: :destroy
   belongs_to :category
   
   validates :name, presence: true, uniqueness: true,
@@ -20,12 +20,7 @@ class Product < ApplicationRecord
       only_integer: true
     }
   validates :detail, presence: true
-  validates :rate_average, presence: true,
-    numericality: {
-      greater_than: Settings.product.rate_average.minimum,
-      less_than: Settings.product.rate_average.maximum,
-      only_integer: true
-    }
+  validates :rate_average, presence: true
 
   scope :filter_product, ->(sort_type, sort_order){
     order sort_type || DEFAULT_SORT_TYPE => sort_order || DEFAULT_SORT_ORDER

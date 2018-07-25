@@ -4,24 +4,24 @@
 <table class="table table-hover">
   <tr>
     <th><%= t ".product" %></th>
-    <th><%= t ".quantity" %></th>
     <th><%= t ".price" %></th>
+    <th><%= t ".quantity" %></th>
     <th><%= t ".update" %></th>
     <th><%= t ".delete" %></th>
   </tr>
   <% @cart.each do |cart| %>
     <tr>
       <td>
-        <a href="#"><%= cart.product.name %></a> 
+        <%= link_to cart.product.name, product_path(cart.product) %>
       </td>
       <%= form_for :cart, url: cart_path(cart), method: :patch do |f| %>
+        <td>
+          $<%= cart.product.price %> x
+        </td>
         <td>
           <%= number_field_tag :quantity, cart.quantity, class: "form-control",
             min: 1, max: cart.product.quantity + cart.quantity %>
           <%= hidden_field_tag :cart_id, cart.id %>
-        </td>
-        <td>
-          $<%= cart.quantity * cart.product.price %>
         </td>
         <td>
           <%= f.button t(".update"), type: "submit", class: "btn btn-success" %>

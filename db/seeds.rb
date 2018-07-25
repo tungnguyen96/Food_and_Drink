@@ -35,5 +35,6 @@ end
 User.create!(
   name: "admin",
   email: "admin@gmail.com",
+  admin: true,
   password: "123123"
 )

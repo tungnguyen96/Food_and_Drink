@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :carts, only: %i(show create update destroy)
   resources :product_orders, only: %i(show)
   resources :ratings, only: :create
-
+  resources :feedbacks, only: %i(new create)
+  
   namespace :account do
     resources :sessions, only: %i(new create destroy)
     resources :users, only: %i(new create show edit update)

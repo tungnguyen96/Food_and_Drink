@@ -5,6 +5,7 @@ en:
   no_product: "No products found!"
   rate_success: "Rate success!"
   rate_fail: "Rate fail!"
+  check_admin: "Can not access!"
   views:
     pagination:
       first: "« first"
@@ -16,12 +17,13 @@ en:
     admin_nav:
       name: "Foods and Drinks"
       home: "Home"
-      log_out: "Sign out"
+      log_out: "Log out"
       dashboard: "Dashboard"
       cate: "Categories"
       order: "Orders"
       product: "Products"
       user: "Users"
+      logout: "Log out"
     category:
       shop: "Shop Name"
       food: "Food"
@@ -35,6 +37,7 @@ en:
       sign: "Sign up"
       home: "Home"
       cart: "Cart"
+      feedback: "Feedback"
   layouts:
     admin:
       title: "Foods & Drinks"
@@ -70,7 +73,7 @@ en:
         sign: "Sign up now!"
         new: "New user? "
       create:
-        welcome: "Welcome to my website"
+        welcome: "Welcome to my website!"
         error: "Email or Password incorrect!"
   admin:
     users:
@@ -80,16 +83,45 @@ en:
         address: "Address"
         delete: "Delete"
         confirm: "Are you sure?"
+        id: "ID"
+    products:
+      index:
+        id: "ID"
+        name: "Name"
+        price: "Price"
+        quantity: "Quantity"
+        detail: "Detail"
+        rate: "Rate average"
+        category: "Category"
+        edit: "Edit"
+        delete: "Delete"
+        create: "Create"
+        confirmdelete: "Delete?"
+      update:
+        update: "Updated!"
+      destroy:
+        delete: "Delete successful!"
+      edit:
+        title: "Edit Product"
+        update: "Update"
+      new:
+        title: "Create Product"
+        create: "Create"
+      create:
+        created: "Created!"
+        fail: "Failed! Try again!"
+      error_messages:
+        the: "The"
   products:
     index:
       title: "Products"
       cart: "Add to Cart"
       filter: "Product Filter"
-      name_desc: "Name Z-A"
-      price_asc: "Price A-Z"
-      price_desc: "Price Z-A"
-      rate_asc: "Rating A-Z"
-      rate_desc: "Rating Z-A"
+      name_desc: "Name from Z to A"
+      price_asc: "Price from low to high"
+      price_desc: "Price from high to low"
+      rate_asc: "Rating from low to high"
+      rate_desc: "Rating from high to low"
       price: "Price: "
       rate: "Rate: "
     product:
@@ -130,3 +162,10 @@ en:
       detail: "Detail"
     create:
       purchased: "Purchased!"
+  feedbacks:
+    new:
+      title: "Feedback"
+      send: "Send"
+    create:
+      success: "Thanks for your feedback!"
+      fail: "Your feedback failed, please resubmit!"

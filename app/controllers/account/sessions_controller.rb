@@ -6,8 +6,7 @@ module Account
       user = User.find_by email: params[:session][:email].downcase
       if user&.authenticate(params[:session][:password])
         log_in user
-        flash[:success] = t ".welcome"
-        redirect_to root_path
+        check_admin user
       else
         flash.now[:danger] = t ".error"
         render :new

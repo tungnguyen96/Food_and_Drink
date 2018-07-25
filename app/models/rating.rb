@@ -20,6 +20,5 @@ class Rating < ApplicationRecord
     rate_count = user.ratings.count
     rate_average = product.update_column :rate_average,
       total_rate / rate_count
-      byebug
   end
 end

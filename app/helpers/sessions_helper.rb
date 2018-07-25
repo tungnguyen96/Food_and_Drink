@@ -19,4 +19,13 @@ module SessionsHelper
     session.delete :user_id
     @current_user = nil
   end
+
+  def check_admin user
+    if user.admin?
+      redirect_to admin_products_path
+    else
+      flash[:success] = t ".welcome"
+      redirect_to root_path
+    end
+  end
 end
