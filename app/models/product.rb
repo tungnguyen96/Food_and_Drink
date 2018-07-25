@@ -34,6 +34,8 @@ class Product < ApplicationRecord
       product = Product.find_by id: product_id
       quantity = product.quantity + add_quantity - sub_quantity
       product.update_column :quantity, quantity
+    end
+  end
 
   def rate(value, user)
     ratings.create(value: value, user_id: user.id)
