@@ -6,10 +6,17 @@ class Cart < ApplicationRecord
   validates :product_id, presence: true
 
   class << self
-    def total_price cart
+    def total_price carts
       total = 0
-      cart.each do |c|
-        total += c.product.price * c.quantity
+      carts.each do |c|
+        next unless c.product.present?
+        if c.product.quantity == 0
+          total = total
+        elsif c.product.quantity < c.quantity
+          total += c.product.price * c.product.quantity
+        else
+          total += c.product.price * c.quantity
+        end
       end
       return total
     end

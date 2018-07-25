@@ -14,4 +14,14 @@ class ProductOrder < ApplicationRecord
       greater_than: Settings.product_order.total_price.minimum,
       only_integer: true
     }
+
+  class << self
+    def total_price product_orders
+      total = 0
+      product_orders.each do |po|
+        total += po.product.price * po.quantity
+      end
+      return total
+    end
+  end
 end

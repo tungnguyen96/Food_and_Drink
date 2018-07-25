@@ -4,9 +4,10 @@ class Product < ApplicationRecord
 
   has_many :product_orders
   has_many :ratings
-  has_many :orders, through: :product_orders
+  has_many :orders, through: :product_orders, dependent: :destroy
   belongs_to :category
-
+  mount_uploader :picture, PictureUploader
+  
   validates :name, presence: true, uniqueness: true,
     length: {minimum: Settings.product.name.minimum}
   validates :price, presence: true,
@@ -16,16 +17,13 @@ class Product < ApplicationRecord
     }
   validates :quantity, presence: true,
     numericality: {
-      greater_than: Settings.product.quantity.minimum,
+      # greater_than: Settings.product.quantity.minimum,
       only_integer: true
     }
   validates :detail, presence: true
-  validates :rate_average, presence: true,
-    numericality: {
-      greater_than: Settings.product.rate_average.minimum,
-      less_than: Settings.product.rate_average.maximum,
-      only_integer: true
-    }
+  validates :rate_average, presence: true
+
+  validate  :picture_size
 
   scope :filter_product, ->(sort_type, sort_order){
     order sort_type || DEFAULT_SORT_TYPE => sort_order || DEFAULT_SORT_ORDER
@@ -36,8 +34,6 @@ class Product < ApplicationRecord
       product = Product.find_by id: product_id
       quantity = product.quantity + add_quantity - sub_quantity
       product.update_column :quantity, quantity
-    end
-  end
 
   def rate(value, user)
     ratings.create(value: value, user_id: user.id)
@@ -58,5 +54,11 @@ class Product < ApplicationRecord
 
   def rate_counts
     ratings.count
+  end
+
+  def picture_size
+    if picture.size > 2.megabytes
+      errors.add(:picture, "should be less than 2MB")
+    end
   end
 end
