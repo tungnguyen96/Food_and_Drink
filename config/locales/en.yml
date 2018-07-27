@@ -6,6 +6,7 @@ en:
   rate_success: "Rate success!"
   rate_fail: "Rate fail!"
   check_admin: "Can not access!"
+  notpermis: "You do NOT have permission!"
   views:
     pagination:
       first: "« first"
@@ -38,6 +39,9 @@ en:
       home: "Home"
       cart: "Cart"
       feedback: "Feedback"
+      input: "Input keywords to search"
+      search: "Search"
+      categories: "Categories"
   layouts:
     admin:
       title: "Foods & Drinks"
@@ -124,6 +128,7 @@ en:
       rate_desc: "Rating from high to low"
       price: "Price: "
       rate: "Rate: "
+      noproduct: "No product!"
     product:
       cart: "Add to Cart"
     show:
