@@ -35,11 +35,7 @@
           <%= f.button t(".rate"), class: "btn btn-primary", type: "submit" %>
         </div>
       <% end %>
-    </div>
-    <h3 class="card-title"><%= @product.name %></h3>
-    <h4>$<%= @product.price %></h4>
-    <p class="card-text"><%= @product.detail%></p>
-    <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>  
+    </div> 
     <%= form_for(:cart, url: carts_path) do |f| %>
       <%= hidden_field_tag :product_id, @product.id %>
       <table>

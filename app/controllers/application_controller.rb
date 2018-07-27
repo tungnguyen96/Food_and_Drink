@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
   include CartsHelper
+  before_action :search
   
   def check_login
     return if current_user.present?
@@ -16,7 +17,11 @@ class ApplicationController < ActionController::Base
 
   def is_admin?
     return if current_user.admin? == false
-    flash[:danger] = "You do NOT have permission!"
+    flash[:danger] = t :notpermis
     redirect_to root_path
+  end
+
+  def search
+    @q = Product.search(params[:q])
   end
 end
