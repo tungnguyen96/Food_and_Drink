@@ -3,17 +3,27 @@
 <h1><%= t ".title" %></h1>
 <table class="table table-hover">
   <tr>
+    <th></th>
     <th><%= t ".product" %></th>
     <th><%= t ".price" %></th>
+    <th>Quantity</th>
   </tr>
   <% @product_orders.each do |po| %>
     <tr>
-      <td><%= po.product.name %></td>
-      <td>$<%= po.product.price %> x <%= po.quantity %></td>
+      <td>
+        <% if po.product.picture? %>
+          <%= image_tag po.product.picture.url, width: 100, height: 75 %>
+        <% end %>
+      </td>
+      <td><%= link_to po.product.name, product_path(po.product) %></td>
+      <td>$<%= po.product.price %></td>
+      <td><%= po.quantity %></td>
     </tr>
   <% end %>
   <tr>
     <td><strong><%= t ".total" %></strong></td>
+    <td></td>
+    <td></td>
     <td><strong>$<%= @total_price %></strong></td>
   </tr>
   <tr>

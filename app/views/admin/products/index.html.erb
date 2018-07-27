@@ -1,8 +1,8 @@
 <table class="table table-hover">
   <%= link_to t(".create"), new_admin_product_path %>
   <tr class="table-secondary">
-    <th></th>
     <th><%= t ".id" %></th>
+    <th></th>
     <th><%= t ".name" %></th>
     <th><%= t ".price" %></th>
     <th><%= t ".quantity" %></th>
@@ -14,8 +14,12 @@
   </tr>
   <% @products.each do |p| %>
     <tr>
-      <td><%= image_tag p.picture.url if p.picture? %></td>
-      <td><%= p.id %></td>
+      <th><%= p.id %></th>
+      <td>
+        <% if p.picture? %>
+          <%= image_tag p.picture.url, width: 150, height: 100 %>
+        <% end %>
+      </td>
       <td><%= p.name %></td>
       <td>$<%= p.price %></td>
       <td><%= p.quantity %></td>

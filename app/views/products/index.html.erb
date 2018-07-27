@@ -37,8 +37,9 @@
     <div class="col-md-4 mb-4">
       <div class="card h-100">
         <div class="card-body">
-          <%= link_to image_tag("download.jpeg", width: "200"),
-            product_path(product), class:"card-img-top" %>
+          <% if product.picture? %>
+            <%= image_tag product.picture.url, width: 305 %>
+          <% end %>
           <h2 class="card-title">
             <%= link_to  product.name, product_path(product) %>
           </h2>

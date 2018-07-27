@@ -146,18 +146,19 @@ en:
       productdel: "Product deleted!"
       only: "Only "
       edit: ", edit from "
-      out: "Out of stock!"
+      out: "Out of stock! Edit from "
     update:
       notice: "Updated!"
     destroy:
       notice: "Delete failed!"
       history: "History purchase"
+      noticedel: "Deleted!"
   product_orders:
     show:
       title: "Detail history purchase"
       product: "Product"
-      price: "Price x Quantity"
-      total: "Total price"
+      price: "Price"
+      total: "Total price:"
       history: "History purchase"
   orders:
     show:

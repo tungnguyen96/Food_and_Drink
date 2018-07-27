@@ -25,7 +25,6 @@
 
         <%= image_tag @product.picture.url if @product.picture? %>
 
-        <%= f.label :picture %>
         <%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png" %>
 
         <%= f.submit t(".update"), class: "btn btn-success" %>

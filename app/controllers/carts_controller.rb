@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
   before_action :check_login
-  before_action :is_admin?, only: [:create, :show, :update, :destroy]
+  before_action :is_admin?
+  before_action :find_cart, only: [:update, :destroy]
 
   def show
     @cart = current_user.carts
@@ -30,6 +31,7 @@ class CartsController < ApplicationController
   def destroy
     return unless @cart
     if @cart.destroy
+      flash[:success] = t ".noticedel"
     else
       flash[:danger] = t ".notice"
     end
@@ -43,6 +45,6 @@ class CartsController < ApplicationController
   end
 
   def find_cart
-    @cart = current_user.carts.find_by id: params[:cart_id] || params[:id] 
+    @cart = current_user.carts.find_by id: params[:id] 
   end
 end

@@ -1,15 +1,15 @@
 class PictureUploader < CarrierWave::Uploader::Base
-  include CarrierWave::MiniMagick
-  process resize_to_limit: [200, 200]
+  include Cloudinary::CarrierWave
 
-  if Rails.env.production?
-    storage :fog
-  else
-    storage :file
+  process convert: "png"
+  process tags: ["post_picture"]
+
+  version :standard do
+    process :resize_to_fill => [100, 150, :north]
   end
 
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  version :thumbnail do
+    resize_to_fit(50, 50)
   end
 
   def extension_whitelist
