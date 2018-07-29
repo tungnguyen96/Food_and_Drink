@@ -2,8 +2,7 @@
 
 body {
   padding-top: 54px;
-  background-color: $alice_blue;
-  }
+}
   
 @media (min-width: 992px) {
   body {
@@ -11,48 +10,51 @@ body {
   }
 }
 
-.dropbtn {
-  background-color: $gray20;
-  color: $white;
-  padding: 16px;
-  font-size: 16px;
-  cursor: pointer;
-  width: 250px;
-  text-align: left;
+.home {
+  background-color: $light_brown;
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
+.navbar {
+  background-color: $brown;
+  box-shadow: 1px 1px 5px;
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: $snow;
-  min-width: 160px;
-  box-shadow: $gray20;
-  z-index: 1;
-  right: 0;
+.search-form {
+  padding-left: 300px;
 }
 
-.dropdown-content a {
-  color: $black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+.btn-outline-success {
+  color: $white_pink;
+  border-color: $light_brown;
 }
 
-.dropdown-content a:hover {
-  background-color: $white_smoke
+.slide {
+
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+.pagination {
+  .page-item.active .page-link {
+    color: $white_pink;
+    background-color: $brown;
+    border-color: $white_pink;
+  }
+  
+  .page-link {
+    border: 1px solid $brown;
+    background-color: $brown;
+  }
+  
+  .page-link:hover {
+    background-color:$light_brown;
+  }
 
-.dropdown:hover .dropbtn {
-  background-color: $black;
+  a {
+    color: $white_pink;
+  }
+
+  a:hover {
+    color: $white;
+  }
 }
 
 input, textarea, select, .uneditable-input {
@@ -63,6 +65,7 @@ input, textarea, select, .uneditable-input {
 
 input {
   height: auto !important;
+  margin-bottom: 0px;
 }
 
 #error_explanation {
