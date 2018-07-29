@@ -17,7 +17,7 @@ end
 # Fake products
 25.times do |n|
   name = Faker::Food.unique.fruits
-  price = rand(20..60)
+  price = rand(10000..100000)
   quantity = rand(1..10)
   detail = Faker::Food.description
   rate_average = rand(1..5)
@@ -36,17 +36,20 @@ User.create!(
   name: "admin",
   email: "admin@gmail.com",
   admin: true,
+  address: "Ca Mau",
   password: "123123"
 )
 
 User.create!(
   name: "Tung",
   email: "tung@gmail.com",
+  address: "Phu Tho",
   password: "123123"
 )
 
 User.create!(
   name: "Hanh",
   email: "hanh@gmail.com",
+  address: "Bac Ninh",
   password: "123123"
 )

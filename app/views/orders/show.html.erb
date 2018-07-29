@@ -4,16 +4,16 @@
 <table class="table table-hover">
   <tr>
     <th><%= t ".date" %></th>
+    <th><%= t ".delivery" %></th>
+    <th><%= t ".payment" %></th>
     <th><%= t ".detail" %></th>
   </tr>
   <% @order.each do |o| %>
     <tr>
-      <td>
-        <%= o.created_at %>
-      </td>
-      <td>
-        <%= link_to t(".detail"), product_order_path(o) %>
-      </td>
+      <td><%= o.created_at %></td>
+      <td><%= o.delivery %></td>
+      <td><%= o.payment %></td>
+      <td><%= link_to t(".detail"), product_order_path(o) %></td>
     </tr>
   <% end %>
 </table>

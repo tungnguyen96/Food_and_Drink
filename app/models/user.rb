@@ -14,7 +14,8 @@ class User < ApplicationRecord
   validates :password, presence: true,
     length: {minimum: Settings.user.password.minimum},
     allow_nil: true
-
+  validates :address, presence: true
+  
   has_secure_password
   before_save :downcase_email
 

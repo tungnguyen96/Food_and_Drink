@@ -1,22 +1,23 @@
 class OrdersController < ApplicationController
   before_action :check_login
+  before_action :find_order, only: [:create, :destroy]
+
+  def new
+    @order = Order.create! user: current_user
+    @cart = current_user.carts
+    @total_price = Cart.total_price @cart
+  end
 
   def show
     @order = current_user.orders.order created_at: :desc
   end
 
   def create
-    @order = Order.new purchased: true, user: current_user
-    @order.save
+    @order.update! purchased: true, delivery: params[:delivery],
+      payment: params[:payment], address: params[:address]
     carts = current_user.carts
-    $i = 0
-    $j = carts.count
     carts.each do |c|
-      if c.product.blank?
-        $i += 1
-        next
-      elsif c.product.quantity == 0
-        $i += 1
+      if c.product.blank? || c.product.quantity == 0
         next
       elsif c.product.quantity < c.quantity
         cart_quantity = c.product.quantity
@@ -32,12 +33,16 @@ class OrdersController < ApplicationController
       c.product.update_column :quantity, product_quantity
       c.destroy
     end
-    if $i == $j
-      flash[:danger] = t ".danger"
-      @order.destroy
-    else
-      flash[:success] = t ".purchased"
-    end
-      redirect_to cart_path(current_user)
+    flash[:success] = t ".purchased"  
+    redirect_to cart_path(current_user)
+  end
+
+  def destroy
+    @order.destroy
+    redirect_to cart_path(current_user)
+  end
+
+  def find_order
+    @order = Order.find_by id: params[:id]
   end
 end
