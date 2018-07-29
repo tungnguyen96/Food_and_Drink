@@ -17,3 +17,16 @@
 //= require popper
 //= require bootstrap
 //= require_tree .
+
+$(document).ready(function(){
+  $('.dropdown-submenu a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+  feedback_options = {
+    title: "Feedback"
+  };
+  
+  feedback.init(feedback_options);
+});
