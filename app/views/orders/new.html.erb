@@ -6,8 +6,6 @@
       </div>
       <div class="modal-body">
         <strong><%= t ".account" %></strong><%= current_user.email %><hr>
-        <strong><%= t ".address" %></strong>
-        <%= text_field_tag :address, current_user.address, class: "form-control"%>
         <strong><%= t ".product" %></strong>
         <table class="table table-hover">
           <tr>
@@ -33,38 +31,23 @@
               </tr>
             <% end %>
           <% end %>
-        <table>
+        </table>
         <hr>
+        <%= render "delivery" %>  
+        <strong><%= t ".payment" %></strong><br>
+        <table class="table table-hover">
+          <tr>
+            <td><input type="radio" name="payment" checked value="Pay on Delivery" id="pod"></td>
+            <th><%= t ".pod" %></th>
+          </tr>
+          <tr>
+            <td><input type="radio" name="payment" value="Online payment" id="onlinepayment"></td>
+            <th><%= t ".online" %></th>
+          </tr>
+        </table>
+        <%= link_to image_tag("https://www.nganluong.vn/css/newhome/img/button/safe-pay-3.png", style:"display: none;", id: "nganluong"),
+          "https://www.nganluong.vn/button_payment.php?receiver=haahdoan@gmail.com&product_name=#{@order.id}&price=#{@total_price}" %>
         
-          <strong><%= t ".delivery" %></strong>
-          <table class="table table-hover">
-            <tr>
-              <td><input type="radio" name="delivery" checked value="Delivery of savings"></td>
-              <th><%= t ".savings" %></th>
-            </tr>
-            <tr>
-              <td><input type="radio" name="delivery" value"Fast delivery"></td>
-              <th><%= t ".fast" %></th>
-            </tr>
-          </table>
-          <hr>
-          <strong><%= t ".total" %></strong><h3><%= @total_price %> (VND)</h3><hr>
-          
-          <strong><%= t ".payment" %></strong><br>
-          <table class="table table-hover">
-            <tr>
-              <td><input type="radio" name="payment" checked value="Pay on Delivery" id="pod"></td>
-              <th><%= t ".pod" %></th>
-            </tr>
-            <tr>
-              <td><input type="radio" name="payment" value="Online payment" id="onlinepayment"></td>
-              <th><%= t ".online" %></th>
-            </tr>
-          </table>
-          <%= link_to image_tag("https://www.nganluong.vn/css/newhome/img/button/safe-pay-3.png",
-            id: "nganluong"),
-            "https://www.nganluong.vn/button_payment.php?receiver=haahdoan@gmail.com&product_name=#{@order.id}&price=#{@total_price}" %>
-          
       </div>
       <div class="modal-footer">
         <%= link_to t(".cancel"), order_path(@order), method: :delete %>

@@ -28,3 +28,5 @@ rating:
   value:
     minimum: 0
     maximum: 6
+delivery:
+  map_key: "AIzaSyD5SRU7ynkWGxfgLSlBNr-JgBZhaGUQx3U"
