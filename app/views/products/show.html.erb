@@ -1,6 +1,6 @@
 <body class="product">
   <div class="card mt-4">
-    <%= image_tag @product.picture.url if @product.picture? %>
+    <%= image_tag(@product.picture.url, class: "card-img-top") if @product.picture? %>  
     <div class="card-body">
       <div>
         <h3 class="card-title"><%= @product.name %></h3>

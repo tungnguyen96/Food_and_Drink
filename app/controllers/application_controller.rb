@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include CartsHelper
   before_action :search
   before_action :load_categories
+  before_action :load_products
   
   def check_login
     return if current_user.present?
@@ -22,5 +23,9 @@ class ApplicationController < ActionController::Base
 
   def load_categories
     @categories = Category.parent_category
+  end
+
+  def load_products
+    @latest_products = Product.latest_product
   end
 end

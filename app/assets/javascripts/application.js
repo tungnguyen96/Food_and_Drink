@@ -24,4 +24,9 @@ $(document).ready(function(){
     e.stopPropagation();
     e.preventDefault();
   });
+  feedback_options = {
+    title: "Feedback"
+  };
+  
+  feedback.init(feedback_options);
 });

@@ -22,12 +22,13 @@ class Product < ApplicationRecord
     }
   validates :detail, presence: true
   validates :rate_average, presence: true
-
   validate  :picture_size
 
   scope :filter_product, ->(sort_type, sort_order){
     order sort_type || DEFAULT_SORT_TYPE => sort_order || DEFAULT_SORT_ORDER
   }
+  scope :latest_product, ->{order(created_at: :desc).limit 3}
+
 
   def rate(value, user)
     ratings.create(value: value, user_id: user.id)
@@ -37,6 +38,10 @@ class Product < ApplicationRecord
   def update_rate_average
     return if rate_counts == 0
     update rate_average: (total_rate_points / rate_counts).round
+  end
+
+  def rated_by?(user)
+    Rating.exists?(user: user, product: self)
   end
 
   private

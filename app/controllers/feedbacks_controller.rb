@@ -4,13 +4,15 @@ class FeedbacksController < ApplicationController
   def new; end
 
   def create
+    
     @feedback = current_user.feedbacks.build feedback_params
+
     if @feedback.save
-      flash.now[:success] = t ".success"
+      flash[:success] = t ".success"
     else
       flash.now[:danger] = t ".fail"
     end
-    render :new
+    redirect_to root_path
   end
 
   private

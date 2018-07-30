@@ -7,6 +7,8 @@ en:
   rate_fail: "Rate fail!"
   check_admin: "Can not access!"
   notpermis: "You do NOT have permission!"
+  had_rate: "You have rated!"
+  no_star: "Please choose star number!"
   views:
     pagination:
       first: "« first"
@@ -25,13 +27,17 @@ en:
       product: "Products"
       user: "Users"
       logout: "Log out"
-    category:
-      shop: "Shop Name"
-      food: "Food"
-      drink: "Drink"
-      category1: "Category 1"
-      category2: "Category 2"
-      category3: "Category 3"
+    feedback:
+      feedback: "Feedback"
+      close: "Close"
+      send: "Send"
+    filter:
+      filter: "Product Filter"
+      name_desc: "Name from Z to A"
+      price_asc: "Price from low to high"
+      price_desc: "Price from high to low"
+      rate_asc: "Rating from low to high"
+      rate_desc: "Rating from high to low"
     header:
       food: "Food and Drink"
       log: "Log in"
@@ -42,6 +48,9 @@ en:
       input: "Input keywords to search"
       search: "Search"
       categories: "Categories"
+    slideshow:
+      pre: "Previous"
+      next: "Next"
   layouts:
     admin:
       title: "Foods & Drinks"
@@ -120,12 +129,6 @@ en:
     index:
       title: "Products"
       cart: "Add to Cart"
-      filter: "Product Filter"
-      name_desc: "Name from Z to A"
-      price_asc: "Price from low to high"
-      price_desc: "Price from high to low"
-      rate_asc: "Rating from low to high"
-      rate_desc: "Rating from high to low"
       price: "Price: "
       rate: "Rate: "
       noproduct: "No product!"
@@ -200,6 +203,7 @@ en:
     new:
       title: "Feedback"
       send: "Send"
+      close: "Close"
     create:
       success: "Thanks for your feedback!"
       fail: "Your feedback failed, please resubmit!"
