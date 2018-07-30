@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root "products#index"
   resources :categories, only: %i(index show)
   resources :products, only: %i(index show)
-  resources :orders, only: %i(show create)
+  resources :orders, only: %i(new show create destroy)
   resources :carts, only: %i(show create update destroy)
   resources :product_orders, only: %i(show)
   resources :ratings, only: :create
