@@ -1,14 +1,19 @@
-<div>
-  <% @categories.each do |category| %>
-    <button class="dropdown btn btn-infor"> 
-      <%= link_to  category.name, category, class: "dropdown-toggle"%>
-      <ul class="dropdown-menu">
-      <% category.children.each do |child| %>
-        <li><%= link_to child.name, category_path(child.id) %></li>
+<div class="nav-item dropdown">
+  <%= link_to t(".categories"), categories_path, class: "nav-link" %>
+    <ul class="dropdown-menu">
+      <% @categories.each do |category| %>
+        <li class="dropdown-submenu">
+          <%= link_to category.name, category_path(category.id),
+            class: "dropdown-toggle", tabindex: "-1"%>
+          <ul class="dropdown-menu">
+            <% category.children.each do |child| %>
+              <li>
+                <%= link_to child.name, category_path(child.id),
+                  tabindex: "-1" %>
+              </li>
+            <% end %>
+          </ul>
+        </li>
       <% end %>
-      </ul>
-    </button>
-  <% end %>
+    </ul>
 </div>
-
-

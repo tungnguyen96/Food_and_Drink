@@ -1,5 +1,5 @@
 class RatingsController < ApplicationController
-  before_action :require_login
+  before_action :check_login
   before_action :load_product
 
   def create

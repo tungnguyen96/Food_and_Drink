@@ -1,34 +1,69 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top">
   <div class="container">
     <%= link_to t(".food"), root_path, class: "navbar-brand" %>
-    <%= search_form_for @q do |f| %>
-      <table>
-        <tr>
-          <td><%= f.text_field :name_or_detail_cont, placeholder: t(".input"),
-            class: "form-control" %></td>
-          <td><%= f.submit t(".search"), class: "btn btn-primary" %></td>
-        </tr>
-      </table>
-    <% end %>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="search-form">
+      <%= search_form_for @q, class: "form-inline my-2 my-lg-0" do |f| %>
+        <%= f.text_field :name_or_detail_cont, placeholder: t(".input"),
+              class: "form-control mr-sm-2" %>
+        <%= f.button t(".search"),
+          class: "btn btn-outline-success my-2 my-sm-0", type: "submit" %>
+      <% end %>
+      </div>
       <ul class="navbar-nav ml-auto">
-        <%= link_to  t(".categories"), categories_path, class: "nav-link" %>
+
+        <!-- categories dropdown -->
+        
+        <div class="nav-item dropdown">
+          <%= link_to t(".categories"), categories_path,
+            class: "nav-link dropdown-toggle" %>
+            <ul class="dropdown-menu">
+              <% @categories.each do |category| %>
+                <li class="dropdown-submenu">
+                  <%= link_to category.name, category_path(category.id),
+                    class: "dropdown-toggle", tabindex: "-1"%>
+                  <ul class="dropdown-menu">
+                    <% category.children.each do |child| %>
+                      <li><%= link_to child.name,
+                        category_path(child.id), tabindex: "-1" %></li>
+                    <% end %>
+                  </ul>
+                </li>
+              <% end %>
+            </ul>
+        </div>
+
+        <li>
+          <%= link_to t(".feedback"), new_feedback_path, class: "nav-link" %>
+        </li>
         <% if logged_in? %>
-          <li class="nav-item">
-            <%= link_to t(".feedback"), new_feedback_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to t(".cart"), cart_path(@current_user), class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to @current_user.name, account_user_path(@current_user), class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to t(".logout"), account_session_path(@current_user), method: :delete, class: "nav-link" %>
-          </li>
+
+
+        <!-- account dropdown -->
+        <li class="nav-item dropdown">
+          <!-- toggle -->
+          <%= link_to  "Account", "#", class: "nav-link dropdown-toggle",
+              id: "navbarDropdown", data: {toggle: "dropdown"},
+              aria: {haspopup: "true", expanded: "false"} %>
+
+          <!-- items -->
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to t(".cart"), cart_path(@current_user),
+              class: "dropdown-item" %>
+            <%= link_to @current_user.name,
+              account_user_path(@current_user), class: "dropdown-item" %>
+            <div class="dropdown-divider"></div>
+            <%= link_to t(".logout"), account_session_path(@current_user),
+                    method: :delete, class: "dropdown-item" %>
+          </div>
+        </li>
+
+
+
         <% else %>
           <li class="nav-item">
-            <%= link_to t(".log"), new_account_session_path, class: "nav-link" %>
+            <%= link_to t(".log"), new_account_session_path,
+              class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to t(".sign"), new_account_user_path, class: "nav-link" %>
