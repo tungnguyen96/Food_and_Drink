@@ -32,20 +32,13 @@
               <% end %>
             </ul>
         </div>
-
-        <li>
-          <%= link_to t(".feedback"), new_feedback_path, class: "nav-link" %>
-        </li>
         <% if logged_in? %>
-
-
         <!-- account dropdown -->
         <li class="nav-item dropdown">
           <!-- toggle -->
           <%= link_to  "Account", "#", class: "nav-link dropdown-toggle",
               id: "navbarDropdown", data: {toggle: "dropdown"},
               aria: {haspopup: "true", expanded: "false"} %>
-
           <!-- items -->
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <%= link_to t(".cart"), cart_path(@current_user),
@@ -57,9 +50,6 @@
                     method: :delete, class: "dropdown-item" %>
           </div>
         </li>
-
-
-
         <% else %>
           <li class="nav-item">
             <%= link_to t(".log"), new_account_session_path,

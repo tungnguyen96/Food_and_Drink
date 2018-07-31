@@ -9,12 +9,17 @@
   }
 
   a {
-    color: #D46A6A;
+    color: $light_pink;
   }
 
   a:hover {
     text-decoration: none;
     color: $white;
+  }
+
+  .card-img-top {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
   }
 }
 
@@ -49,7 +54,7 @@
   background-color: $light_brown;
   
   h3, h4, p {
-    color: white;
+    color: $white;
   }
 
   .form-check {
@@ -64,13 +69,19 @@
     margin: 0%;
   }
 
-  .card {
+  .card.mt-4 {
     border-radius: 10px;
     box-shadow: inset 2px 2px 5px;
     background-color: $brown;
 
     .btn {
       margin: 5px;
+    }
+
+    .card-img-top {
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      height: 400px;
     }
 
     .card-body {
