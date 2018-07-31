@@ -2,31 +2,32 @@
   <div id="carouselExampleIndicators"
     class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators"
+        data-slide-to="0" class="active"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
+    <% flag = true %>
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <%= image_tag "images.jpeg",
-          class: "d-block w-100", alt: "First slide" %>
-      </div>
-      <div class="carousel-item">
-        <%= image_tag "image2.jpeg",
-          class: "d-block w-100", alt: "Second slide" %>
-      </div>
-      <div class="carousel-item">
-        <%= image_tag "download.jpeg",
-          class: "d-block w-100", alt: "Third slide" %>
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <% @latest_products.each do |product| %>
+        <% if product.picture? %>
+          <div class="carousel-item <%= if flag; "active"; end %>">
+            <%= image_tag product.picture.url,
+              class: "d-block w-100", alt: "slide" %>
+          </div>
+        <% flag = false %>
+      <% end %>
+    <% end %>
+        </div>
+    <a class="carousel-control-prev"
+      href="#carouselExampleIndicators" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
+      <span class="sr-only"><%= t ".pre" %></span>
     </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <a class="carousel-control-next"
+      href="#carouselExampleIndicators" role="button" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
+      <span class="sr-only"><%= t ".next" %></span>
     </a>
   </div>
 </div>
