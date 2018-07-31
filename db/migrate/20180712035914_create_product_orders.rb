@@ -3,7 +3,6 @@ class CreateProductOrders < ActiveRecord::Migration[5.2]
     create_table :product_orders do |t|
       t.integer :quantity
       t.string :total_price
-      t.string :int
       t.references :order, foreign_key: true
       t.references :product, foreign_key: true
 

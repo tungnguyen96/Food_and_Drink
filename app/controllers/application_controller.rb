@@ -2,17 +2,12 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include CartsHelper
   before_action :search
+  before_action :load_categories
   
   def check_login
     return if current_user.present?
     flash[:danger] = t :error1
     redirect_to root_path
-  end
-
-  def require_login
-    return if logged_in?
-    flash[:danger] = t :error1
-    redirect_to new_account_session_path
   end
 
   def is_admin?
@@ -21,7 +16,11 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
-  def search
+  def search  
     @q = Product.search(params[:q])
+  end
+
+  def load_categories
+    @categories = Category.parent_category
   end
 end

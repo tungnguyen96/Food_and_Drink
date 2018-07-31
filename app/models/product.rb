@@ -17,7 +17,7 @@ class Product < ApplicationRecord
     }
   validates :quantity, presence: true,
     numericality: {
-      # greater_than: Settings.product.quantity.minimum,
+      greater_than_or_equal_to: Settings.product.quantity.minimum,
       only_integer: true
     }
   validates :detail, presence: true

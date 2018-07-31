@@ -1,51 +1,72 @@
-
-<div class="card mt-4">
-  <%= image_tag @product.picture.url if @product.picture? %>
-  <div class="card-body">
-    <div>
-      <h3 class="card-title"><%= @product.name %></h3>
-      <h4>$<%= @product.price %></h4>
-      <p class="card-text"><%= @product.detail%></p>
-      <span class="text-warning"><%= @product.rate_average %>&#9733;</span>
-    </div>
-    <div class="radio-inline">
-      <%= form_for :rating, url: ratings_path, class: "form-control" do |f| %>
-        <div class="form-check">
-          <%= f.radio_button :value, 1, class: "form-check-input" %>
-          <span class="text-warning">&#9733;</span>
+<body class="product">
+  <div class="card mt-4">
+    <%= image_tag @product.picture.url if @product.picture? %>
+    <div class="card-body">
+      <div>
+        <h3 class="card-title"><%= @product.name %></h3>
+        <h4><%= @product.price %> VND</h4>
+        <p class="card-text"><%= @product.detail%></p>
+        <span class="text-warning"><%= @product.rate_average %>&#9733;</span>
+      </div>
+      <div class="radio-inline">
+        <%= form_for :rating, url: ratings_path, class: "form-control" do |f| %>
+          <div class="form-check">
+            <%= f.radio_button :value, 1, class: "form-check-input" %>
+            <span class="text-warning">&#9733;</span>
+          </div>
+          <div class="form-check">
+            <%= f.radio_button :value, 2, class: "form-check-input" %>
+            <span class="text-warning">&#9733;&#9733;</span>
+          </div>
+          <div class="form-check">
+            <%= f.radio_button :value, 3, class: "form-check-input" %>
+            <span class="text-warning">&#9733;&#9733;&#9733;</span>
+          </div>
+          <div class="form-check">
+            <%= f.radio_button :value, 4, class: "form-check-input" %>
+            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;</span>
+          </div>
+          <div class="form-check">
+            <%= f.radio_button :value, 5, class: "form-check-input" %>
+            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9733;
+            </span>
+          </div>
+          <%= f.hidden_field :product_id, value: @product.id %>
+          <div>
+            <%= f.button t(".rate"), class: "btn btn-primary", type: "submit" %>
+          </div>
+        <% end %>
+      </div>
+      <% if @product.quantity > 0 %>
+        <div class="card-footer">
+          <%= form_for(:cart, url: carts_path) do |f| %>
+            <%= hidden_field_tag :product_id, @product.id %>
+            <table>
+              <tr>
+                <td><%= number_field_tag :quantity, 1,
+                  class: "form-control",
+                  min: 1, max: @product.quantity %></td>
+                <td></td>
+                <td><%= f.submit t(".cart"), class: "btn btn-success" %></td>
+              </tr>
+            </table>
+          <% end %>
         </div>
-        <div class="form-check">
-          <%= f.radio_button :value, 2, class: "form-check-input" %>
-          <span class="text-warning">&#9733;&#9733;</span>
-        </div>
-        <div class="form-check">
-          <%= f.radio_button :value, 3, class: "form-check-input" %>
-          <span class="text-warning">&#9733;&#9733;&#9733;</span>
-        </div>
-        <div class="form-check">
-          <%= f.radio_button :value, 4, class: "form-check-input" %>
-          <span class="text-warning">&#9733;&#9733;&#9733;&#9733;</span>
-        </div>
-        <div class="form-check">
-          <%= f.radio_button :value, 5, class: "form-check-input" %>
-          <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        </div>
-        <%= f.hidden_field :product_id, value: @product.id %>
-        <div>
-          <%= f.button t(".rate"), class: "btn btn-primary", type: "submit" %>
+      <% else %>
+        <div class="card-footer">
+          <table>
+            <tr>
+              <td class="table-danger">Out of stock!</td>
+              <td></td>
+              <td>
+                <button class="btn btn-success" disabled>
+                  <%= t(".cart") %>
+                </button>
+              </td>
+            </tr>
+          </table>
         </div>
       <% end %>
-    </div> 
-    <%= form_for(:cart, url: carts_path) do |f| %>
-      <%= hidden_field_tag :product_id, @product.id %>
-      <table>
-        <tr>
-          <td><%= number_field_tag :quantity, 1, class: "form-control",
-            min: 1, max: @product.quantity %></td>
-          <td></td>
-          <td><%= f.submit t(".cart"), class: "btn btn-success" %></td>
-        </tr>
-      </table>
-    <% end %>
-  </div>
-<div>
+    </div>
+  <div>
+</body>

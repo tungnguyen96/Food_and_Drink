@@ -1,84 +1,55 @@
 <%= provide :title, t(".title") %>
-<li class="dropdown dropright">
-  <button type="button" class="btn btn-success dropdown-toggle"
-    data-toggle="dropdown">
-    <%= t(".filter") %>
-  </button>
-  <ul class="dropdown-menu">
-    <li>
-      <%= link_to t(".name_desc"),
-        products_path(sort: :name, order: :desc),
-        class:"dropdown-item success" %>
-    </li>
-    <li>
-      <%= link_to t(".price_asc"),
-        products_path(sort: :price, order: :asc),
-        class:"dropdown-item" %>
-    </li>
-    <li>
-      <%= link_to t(".price_desc"),
-        products_path(sort: :price, order: :desc),
-        class:"dropdown-item" %>
-    </li>
-    <li>
-      <%= link_to t(".rate_asc"),
-        products_path(sort: :rate_average, order: :asc),
-        class:"dropdown-item" %>
-    </li>
-    <li>
-      <%= link_to t(".rate_desc"),
-        products_path(sort: :rate_average, order: :desc),
-        class:"dropdown-item" %>
-    </li>
-  </ul>
-</li>
-<div class="row">
-  <% @products.each do |product| %>
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <div class="card-body">
-          <% if product.picture? %>
-            <%= image_tag product.picture.url, width: 305 %>
-          <% end %>
-          <h2 class="card-title">
-            <%= link_to  product.name, product_path(product) %>
-          </h2>
-          <div>
-            Price: $<%= product.price %>
-          </div>
-          <div>
-            Quantity: <%= product.quantity %>
-          </div>
-        </div>
-        <% if product.quantity > 0 %>
-          <div class="card-footer">
-            <%= form_for(:cart, url: carts_path) do |f| %>
-              <%= hidden_field_tag :product_id, product.id %>
-              <table>
-                <tr>
-                  <td><%= number_field_tag :quantity, 1, class: "form-control",
-                    min: 1, max: product.quantity %></td>
-                  <td></td>
-                  <td><%= f.submit t(".cart"), class: "btn btn-success" %></td>
-                </tr>
-              </table>
-            <% end %>
-          </div>
-        <% else %>
-          <div class="card-footer">
-            <table>
-              <tr>
-                <td class="table-danger">Out of stock!</td>
-                <td></td>
-                <td><button class="btn btn-success" disabled><%= t(".cart") %></button></td>
-              </tr>
-            </table>
-          </div>
+<body class="home">
+  <%= render  "slideshow" %>
+  <div class="dropdown dropright">
+    <button class="btn btn-success dropdown-toggle"
+      data-toggle="dropdown">
+      <%= t(".filter") %>
+    </button>
+    <ul class="dropdown-menu">
+      <li>
+        <%= link_to t(".name_desc"),
+          products_path(sort: :name, order: :desc),
+          class:"dropdown-item success" %>
+      </li>
+      <li>
+        <%= link_to t(".price_asc"),
+          products_path(sort: :price, order: :asc),
+          class:"dropdown-item" %>
+      </li>
+      <li>
+        <%= link_to t(".price_desc"),
+          products_path(sort: :price, order: :desc),
+          class:"dropdown-item" %>
+      </li>
+      <li>
+        <%= link_to t(".rate_asc"),
+          products_path(sort: :rate_average, order: :asc),
+          class:"dropdown-item" %>
+      </li>
+      <li>
+        <%= link_to t(".rate_desc"),
+          products_path(sort: :rate_average, order: :desc),
+          class:"dropdown-item" %>
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="card custom-card" style="width: 18rem;">
+        <% if product.picture? %>
+          <%= link_to image_tag(product.picture.url,
+            class: "card-img-top"), product_path(product) %>
         <% end %>
+        <div class="card-body">
+          <p class="card-text">
+            <%= link_to  product.name, product_path(product) %>
+          </p>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
-<div class="pagination justify-content-center">
-  <%= paginate @products, theme: "google" %>
-</div>
+    <% end %>
+  </div>
+  <div class="pagination justify-content-center">
+    <%= paginate @products, theme: "google" %>
+  </div>
+</body>
