@@ -1,0 +1,8 @@
+<% unless flash.empty? %>
+  <script type="text/javascript">
+      <% flash.each do |type, content| %>
+        <% type = type.to_s %>
+        toastr['<%= type %>']('<%= content %>');
+      <% end %>
+  </script>
+<% end %>

@@ -1,11 +1,13 @@
 class CartsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   before_action :check_login
   before_action :is_admin?
   before_action :find_cart, only: [:update, :destroy]
 
   def show
-    @cart = current_user.carts
-    @total_price = Cart.total_price @cart
+    @carts = current_user.carts
+    @total_price = Cart.total_price @carts
   end
 
   def create
@@ -17,15 +19,11 @@ class CartsController < ApplicationController
       cart = current_user.carts.build cart_params
       cart.save
     end
-    redirect_to_back
+    redirect_to cart_path current_user
   end
 
   def update
-    return unless @cart
-      @cart.product.id
-    @cart.update_column :quantity, params[:quantity].to_i
-    flash[:success] = t ".notice"
-    redirect_to cart_path current_user
+    @cart&.update_attributes quantity: params[:quantity]
   end
 
   def destroy
@@ -45,6 +43,6 @@ class CartsController < ApplicationController
   end
 
   def find_cart
-    @cart = current_user.carts.find_by id: params[:id] 
+    @cart = current_user.carts.find_by id: params[:id]
   end
 end

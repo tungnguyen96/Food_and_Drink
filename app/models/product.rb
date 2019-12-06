@@ -7,7 +7,7 @@ class Product < ApplicationRecord
   has_many :orders, through: :product_orders, dependent: :destroy
   belongs_to :category
   mount_uploader :picture, PictureUploader
-  
+
   validates :name, presence: true, uniqueness: true,
     length: {minimum: Settings.product.name.minimum}
   validates :price, presence: true,
@@ -22,25 +22,24 @@ class Product < ApplicationRecord
     }
   validates :detail, presence: true
   validates :rate_average, presence: true
-  validate  :picture_size
+  # validate  :picture_size
 
   scope :filter_product, ->(sort_type, sort_order){
     order sort_type || DEFAULT_SORT_TYPE => sort_order || DEFAULT_SORT_ORDER
   }
   scope :latest_product, ->{order(created_at: :desc).limit 3}
 
-
-  def rate(value, user)
+  def rate value, user
     ratings.create(value: value, user_id: user.id)
     update_rate_average
   end
 
   def update_rate_average
-    return if rate_counts == 0
+    return if rate_counts.zero?
     update rate_average: (total_rate_points / rate_counts).round
   end
 
-  def rated_by?(user)
+  def rated_by? user
     Rating.exists?(user: user, product: self)
   end
 
@@ -55,9 +54,9 @@ class Product < ApplicationRecord
     ratings.count
   end
 
-  def picture_size
-    if picture.size > 2.megabytes
-      errors.add(:picture, "should be less than 2MB")
-    end
-  end
+  # def picture_size
+  #   if picture.size > 2.megabytes
+  #     errors.add(:picture, "should be less than 2MB")
+  #   end
+  # end
 end

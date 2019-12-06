@@ -1,9 +1,11 @@
-<div class="feedback">
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><%= t ".feedback" %></button>
-</div>
+  <div class="feedback">
+    <button type="button" class="btn btn-success btn-fab feedback-btn" data-toggle="modal" data-target="#feedbackModal">
+        <%#= t ".feedback" %>
+        <i class="far fa-comment-dots fa-2x"></i>
+    </button>
+  </div>
   <!-- Modal -->
-
-  <div class="modal fade" id="exampleModal" tabindex="-1"
+  <div class="modal fade" id="feedbackModal" tabindex="-1"
     role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -17,11 +19,16 @@
           </button>
         </div>
         <div class="modal-body">
-          <%= form_for :feedback, url: feedbacks_path do |f| %>
-            <%= f.label :subject, class: "col-form-label" %>
-            <%= f.text_field :subject, class: "form-control" %>
-            <%= f.label :detail, class: "col-form-label" %>
-            <%= f.text_area :detail %>
+          <%= form_with scope: :feedback, url: feedbacks_path do |f| %>
+            <div id="feedback-errors"></div>
+            <div class="form-group">
+              <%= f.label :subject, class: "col-form-label" %>
+              <%= f.text_field :subject, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :detail, class: "col-form-label" %>
+              <%= f.text_area :detail, rows: 5 %>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" 
@@ -34,4 +41,3 @@
       </div>
     </div>
   </div>
-

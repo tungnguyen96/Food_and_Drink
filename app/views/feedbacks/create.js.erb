@@ -1,0 +1,7 @@
+<%- if @feedback.errors.present? %>
+  $('#feedback-errors').html(
+    '<%= j error_message(@feedback.errors.full_messages) %>'
+  )
+<%- else %>
+  window.location.href = '<%= root_path %>'
+<% end %>

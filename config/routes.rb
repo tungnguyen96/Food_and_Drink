@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :categories, only: %i(index show)
   resources :products, only: %i(index show)
   resources :orders, only: %i(new show create destroy)
-  resources :carts, only: %i(show create update destroy)
+  resources :carts
   resources :ratings, only: :create
   resources :feedbacks, only: %i(new create)
   resources :product_orders, only: %i(show)

@@ -1,10 +1,13 @@
 class ApplicationController < ActionController::Base
+  # protect_from_forgery with: :null_session  
+
   include SessionsHelper
   include CartsHelper
+
   before_action :search
   before_action :load_categories
   before_action :load_products
-  
+
   def check_login
     return if current_user.present?
     flash[:danger] = t :error1
@@ -17,7 +20,7 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
-  def search  
+  def search
     @q = Product.search(params[:q])
   end
 

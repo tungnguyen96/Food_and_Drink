@@ -1,37 +1,62 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top">
+<nav class="navbar navbar-expand fixed-top bg-rose">
   <div class="container">
     <%= link_to t(".food"), root_path, class: "navbar-brand" %>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <div class="search-form">
-      <%= search_form_for @q, class: "form-inline my-2 my-lg-0" do |f| %>
-        <%= f.text_field :name_or_detail_cont, placeholder: t(".input"),
-              class: "form-control mr-sm-2" %>
+      <%= search_form_for @q, class: "form-inline my-2 my-lg-0 ml-auto" do |f| %>
+        <div class="form-group has-white bmd-form-group">
+          <%= f.text_field :name_or_detail_cont, placeholder: t(".input"),
+                class: "form-control mr-sm-2 ml-auto text-field" %>
+        </div>
         <%= f.button t(".search"),
-          class: "btn btn-outline-success my-2 my-sm-0", type: "submit" %>
+          class: "btn btn-white btn-raised btn-fab btn-round", type: "submit" do %>
+          <i class="fas fa-search"></i>
+        <% end %>
       <% end %>
       </div>
       <ul class="navbar-nav ml-auto">
-
-        <!-- categories dropdown -->
-        
-        <div class="nav-item dropdown">
-          <%= link_to t(".categories"), "#",
-            class: "nav-link dropdown-toggle" %>
-            <ul class="dropdown-menu">
-              <% @categories.each do |category| %>
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tutorials
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a tabindex="-1" href="#">HTML</a></li>
+            <li><a tabindex="-1" href="#">CSS</a></li>
+            <li class="dropdown-submenu">
+              <a class="test" tabindex="-1" href="#">New dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+                <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
                 <li class="dropdown-submenu">
-                  <%= link_to category.name, category_path(category.id),
-                    class: "dropdown-toggle", tabindex: "-1"%>
+                  <a class="test" href="#">Another dropdown <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <% category.children.each do |child| %>
-                      <li><%= link_to child.name,
-                        category_path(child.id), tabindex: "-1" %></li>
-                    <% end %>
+                    <li><a href="#">3rd level dropdown</a></li>
+                    <li><a href="#">3rd level dropdown</a></li>
                   </ul>
                 </li>
-              <% end %>
-            </ul>
+              </ul>
+            </li>
+          </ul>
         </div>
+        <!-- categories dropdown -->
+        
+        <!-- <div class="nav-item dropdown">
+          <%= link_to t(".categories"), "#",
+            class: "nav-link dropdown-toggle", data: {toggle: "dropdown"} %>
+          <ul class="dropdown-menu">
+            <% @categories.each do |category| %>
+              <li class="dropdown-submenu">
+                <%= link_to category.name, category_path(category.id),
+                  class: "dropdown-toggle test", tabindex: "-1"%>
+                <ul class="dropdown-menu">
+                  <% category.children.each do |child| %>
+                    <li><%= link_to child.name,
+                      category_path(child.id), tabindex: "-1" %></li>
+                  <% end %>
+                </ul>
+              </li>
+            <% end %>
+          </ul>
+        </div> -->
         <% if logged_in? %>
         <!-- account dropdown -->
         <li class="nav-item dropdown">
@@ -45,7 +70,7 @@
               <%= link_to t(".cart"), cart_path(@current_user),
                 class: "dropdown-item" %>           
               <%= link_to @current_user.name,
-                account_user_path(@current_user), class: "dropdown-item" %>
+                edit_account_user_path(@current_user), class: "dropdown-item" %>
               <div class="dropdown-divider"></div>
               <%= link_to t(".logout"), account_session_path(@current_user),
                 method: :delete, class: "dropdown-item" %>

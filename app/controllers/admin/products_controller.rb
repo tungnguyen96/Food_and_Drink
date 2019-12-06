@@ -5,7 +5,7 @@ module Admin
 
     def index
       @products = Product.order(:name).all.page(params[:page])
-        .per(Settings.product.pagination)
+                         .per(Settings.product.pagination)
     end
 
     def show; end
@@ -18,7 +18,7 @@ module Admin
       @product = Product.new product_params
       if @product.save
         flash[:success] = t ".created"
-        redirect_to_back
+        redirect_to admin_products_path
       else
         render :new
       end
@@ -32,7 +32,7 @@ module Admin
       @product = Product.find_by id: params[:id]
       if @product.update_attributes product_params
         flash[:success] = t ".update"
-        redirect_to_back
+        redirect_to edit_admin_product_path(@product.id)
       else
         render :edit
       end
@@ -41,7 +41,7 @@ module Admin
     def destroy
       Product.find_by_id(params[:id]).destroy
       flash[:success] = t ".delete"
-      redirect_to_back
+      redirect_to admin_products_path
     end
 
     def check_admin

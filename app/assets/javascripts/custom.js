@@ -7,6 +7,7 @@ $(document).on('turbolinks:load', function() {
   });
 });
 var geocoder, location1, location2, fee;
+
 function initialize() {
   geocoder = new GClientGeocoder();
 }
@@ -14,6 +15,9 @@ function initialize() {
 function showLocation() {
   var address1 = document.getElementById('address1').value;
   var address2 = document.getElementById('address2').value;
+
+  var geocoder = new GClientGeocoder();
+
   geocoder.getLocations(address1, function(response) {
     if (!response || response.Status.code != 200)
     {

@@ -1,19 +1,24 @@
 <% provide :title, t(".history") %>
 
-<h1><%= t ".history" %></h1>
-<table class="table table-hover">
-  <tr>
-    <th><%= t ".date" %></th>
-    <th><%= t ".delivery" %></th>
-    <th><%= t ".payment" %></th>
-    <th><%= t ".detail" %></th>
-  </tr>
-  <% @order.each do |o| %>
-    <tr>
-      <td><%= o.created_at.strftime("%c %r") %></td>
-      <td><%= o.delivery %></td>
-      <td><%= o.payment %></td>
-      <td><%= link_to t(".detail"), product_order_path(o) %></td>
-    </tr>
-  <% end %>
-</table>
+<section class="order-list">
+  <div class="container">
+    <h1 class="text-center"><%= t ".history" %></h1>
+    <br>
+    <table class="table table-hover">
+      <tr>
+        <th><%= t ".date" %></th>
+        <th><%= t ".delivery" %></th>
+        <th><%= t ".payment" %></th>
+        <th><%= t ".detail" %></th>
+      </tr>
+      <% @order.each do |o| %>
+        <tr>
+          <td><%= o.created_at.strftime("%c %r") %></td>
+          <td><%= o.delivery %></td>
+          <td><%= o.payment %></td>
+          <td><%= link_to t(".detail"), product_order_path(o) %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</section>

@@ -1,22 +1,31 @@
 <%= provide :title, t(".title") %>
-<body class="home">
-  <%= render  "slideshow" %>
-  <div class="row">
-    <% @products.each do |product| %>
-      <div class="card custom-card" style="width: 18rem;">
-        <% if product.picture? %>
-          <%= link_to image_tag(product.picture.url,
-            class: "card-img-top"), product_path(product) %>
+<%= render  "feedback" %>
+<div class="home">
+  <% if @products.present? %>
+    <div class="product-list">
+      <%= render  "filter" %>
+      <div class="row">
+        <% @products.each do |product| %>
+          <div class="card-wrapper">
+            <div class="card custom-card" style="width: 18rem;">
+              <%= link_to image_tag(product.picture.url(:thumb),
+                class: "card-img-top"), product_path(product) %>
+              <div class="card-body">
+                <p class="card-text">
+                  <%= link_to product.name, product_path(product) %>
+                </p>
+              </div>
+            </div>
+          </div>
         <% end %>
-        <div class="card-body">
-          <p class="card-text">
-            <%= link_to  product.name, product_path(product) %>
-          </p>
-        </div>
       </div>
-    <% end %>
-  </div>
-  <div class="pagination justify-content-center">
-    <%= paginate @products, theme: "google" %>
-  </div>
-</body>
+      <div class="pagination justify-content-center">
+        <%= paginate @products, theme: "google" %>
+      </div>
+    </div>
+  <% else %>
+    <div class="no-product text-center">
+      <h4>There are no product</h4>
+    </div>
+  <% end %>
+</div>

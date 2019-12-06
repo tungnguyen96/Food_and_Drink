@@ -1,98 +1,63 @@
 <% provide :title, t(".title") %>
 
-<table class="table table-hover">
-  <tr>
-    <th></th>
-    <th><%= t ".product" %></th>
-    <th><%= t ".price" %></th>
-    <th><%= t ".quantity" %></th>
-    <th></th>
-    <th><%= t ".update" %></th>
-    <th><%= t ".delete" %></th>
-  </tr>
-  <% @cart.each do |cart| %>
-    <% if cart.product.present? %>
+<div class="shopping-cart">
+  <table class="table table-hover">
+    <thead class="thead-dark">
       <tr>
-        <td>
-          <% if cart.product.picture? %>
-            <%= image_tag cart.product.picture.url, width: 100, height: 75 %>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to cart.product.name, product_path(cart.product) %>
-        </td>
-        <td>
-          $<%= cart.product.price %>
-        </td>
-        <%= form_for :cart, url: cart_path(cart), method: :patch do |f| %>
-          <% if cart.product.quantity == 0 %>
-            <td>
-              <%= label_tag :quantity, 0, class: "form-control",
-                disabled: true %>
-            </td>
-            <td class="table-danger"><%= t ".out" %> <%= cart.quantity %></td>
-            <td></td>
-          <% elsif cart.product.quantity < cart.quantity %>
-            <td>
-              <%= number_field_tag :quantity, cart.product.quantity, class: "form-control",
-                min: 1, max: cart.product.quantity %>
-            </td>
-            <td class="table-danger">
-              <%= t ".only" %><%= cart.product.quantity %><%= t ".edit" %><%= cart.quantity %>
-            </td>
-            <td>
-              <%= f.button t(".update"), type: "submit", class: "btn btn-success" %>
-            </td>
-          <% else %>
-            <td>
-              <%= number_field_tag :quantity, cart.quantity, class: "form-control",
-                min: 1, max: cart.product.quantity %>
-            </td>
-            <td></td>
-            <td>
-              <%= f.button t(".update"), type: "submit", class: "btn btn-success" %>
-            </td>
-          <% end %>
+        <th scope="col" class="cart-order"></th>
+        <th scope="col" class="cart-index">#</th>
+        <th scope="col" class="cart-product-img"></th>
+        <th scope="col" class="cart-product-name"><%= t ".product" %></th>
+        <th scope="col" class="cart-product-price"><%= t ".price" %></th>
+        <th scope="col" class="cart-product-quantity"><%= t ".quantity" %></th>
+        <th scope="col" class="cart-product-delete"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @carts.each_with_index do |cart, index| %>
+        <tr>
+          <th></th>
+          <th><%= index + 1 %></th>
+          <th><%= image_tag cart.product.picture.thumbnail.url, width: 100, height: 100 %></th>
+          <td><%= link_to cart.product.name, product_path(cart.product.id) %></td>
+          <td>$<%= cart.product.price %></td>
+          <td>
+            <% if cart.product.quantity >= 1 %>
+              <%= number_field_tag :quantity, cart.quantity, class: "form-control js-cart-quantity", data: {id: cart.id},
+                onchange: 'changeQuantity(this)', in: [1..cart.product.quantity] %>
+            <% else %>
+              <p class="text-danger"><b>OUT OF STOCK</b></p>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to cart_path(cart.id), method: :delete, data: {confirm: t(".confirmdelete")}, class: "btn btn-danger" do %>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      <tr>
+        <td><strong><%= t ".total" %></strong></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><strong>$<%= @total_price %></strong></td>
+      </tr>
+      <tr>
+        <td><%= link_to t(".history"), order_path(current_user) %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <% if @total_price > 0 %>
+          <td>
+            <%= link_to t(".purchased"), new_order_path, class: "btn btn-primary" %>
+          </td>
         <% end %>
-        <td>
-          <%= link_to t(".delete"), cart, method: :delete,
-            data: {confirm: t(".confirmdelete")}, class: "btn btn-danger" %>
-        </td>
       </tr>
-    <% else %>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="table-danger"><%= t ".productdel" %></td>
-        <td></td>
-        <td><%= link_to t(".delete"), cart, method: :delete,
-          data: {confirm: t(".confirmdelete")}, class: "btn btn-danger" %>
-        </td>
-      </tr>
-    <% end %>
-  <% end %>
-  <tr>
-    <td><strong><%= t ".total" %></strong></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td><strong>$<%= @total_price %></strong></td>
-  </tr>
-  <tr>
-    <td><%= link_to t(".history"), order_path(current_user) %></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <% if @total_price > 0 %>
-      <td>
-        <%= link_to t(".purchased"), new_order_path, class: "btn btn-primary" %>
-      </td>
-    <% end %>
-  </tr>
-</table>
+    </tbody>
+  </table>
+</div>

@@ -6,15 +6,6 @@
   display: block;
 }
 
-.dropdown-menu {
-  background-color: $brown;
-  padding-left: 8px;
-  
-  a {
-    color: $white;
-  }
-}
-
 .btn-success.dropdown-toggle {
   background-color: $brown;
   border-color: $brown;
@@ -22,7 +13,6 @@
 
 .btn-success.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem $brown;
-  background-color: $brown;
   border-color: $brown;
 }
 
@@ -33,17 +23,10 @@
 
 .show > .btn-success.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem $brown;
-  background-color: $brown;
   border-color: $brown;
 }
 
-.dropdown-item:hover {
-  background-color: $light_brown;
-}
-
 .dropdown-submenu {
-  background-color: $brown;
-  color: $white;
   position: relative;
 }
 
@@ -55,5 +38,5 @@
 
 ul {
   list-style-type: none;
-padding: 0;
+  padding: 0;
 }

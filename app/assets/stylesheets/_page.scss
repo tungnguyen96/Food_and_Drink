@@ -1,70 +1,24 @@
-@import 'color';
-
-body {
-  padding-top: 54px;
-}
-  
 @media (min-width: 992px) {
   body {
     padding-top: 56px;
   }
 }
 
-.home {
-  background-color: $light_brown;
-
-  .pagination {
-    .page-item.active .page-link {
-      color: $white_pink;
-      background-color: $brown;
-      border-color: $white_pink;
-    }
-    
-    .page-link {
-      border: 1px solid $brown;
-      background-color: $brown;
-    }
-    
-    .page-link:hover {
-      background-color:$light_brown;
-    }
-  
-    a {
-      color: $white_pink;
-    }
-  
-    a:hover {
-      color: $white;
-    }
-  }
-}
-
-.dropup {
-  .btn {
-    -webkit-transform: rotate(270deg);
-    margin-top: 150px;
-    margin-right: -50px;
-    float: right;
-    color: $white_pink;
-  }
-
-  .btn:hover {
-    display: block;
-  }
-}
-
 .navbar {
-  background-color: $brown;
+  background-color: $rose;
   box-shadow: 1px 1px 5px;
 }
 
 .search-form {
   padding-left: 300px;
+  .text-field {
+    width: 160px;
+  }
 }
 
 .btn-outline-success {
-  color: $white_pink;
-  border-color: $light_brown;
+  color: $white;
+  border-color: $white;
 }
 
 input, textarea, select, .uneditable-input {

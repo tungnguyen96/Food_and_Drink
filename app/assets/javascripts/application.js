@@ -1,32 +1,18 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, or any plugin's
-// vendor/assets/javascripts directory can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file. JavaScript code in this file should be added after the last require_* statement.
-//
-// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
-// about supported directives.
-//
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require jquery3
 //= require popper
 //= require bootstrap
-//= require_tree .
-
-$(document).ready(function(){
-  $('.dropdown-submenu a.test').on("click", function(e){
-    $(this).next('ul').toggle();
-    e.stopPropagation();
-    e.preventDefault();
-  });
-  feedback_options = {
-    title: "Feedback"
-  };
-  
-  feedback.init(feedback_options);
-});
+//= require bootstrap-sprockets
+//= require datatables
+//= require toastr
+//= require moment.min
+//= require bootstrap-datetimepicker
+//= require bootstrap-material-design.min
+//= require jquery.sharrre.js
+//= require material-kit
+//= require nouislider.min
+//= require custom
+//= require dropdown
+//= require cart

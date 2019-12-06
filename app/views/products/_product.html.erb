@@ -1,12 +1,9 @@
 <div class="card custom-card" style="width: 18rem;">
-  <% if product.picture? %>
-    <%= link_to image_tag(product.picture.url,
-      class: "card-img-top"), product_path(product) %>
-  <% end %>
+  <%= link_to image_tag(product.picture.url(:thumb),
+    class: "card-img-top"), product_path(product) %>
   <div class="card-body">
     <p class="card-text">
       <%= link_to  product.name, product_path(product) %>
     </p>
   </div>
 </div>
-

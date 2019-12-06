@@ -3,11 +3,11 @@ class ProductsController < ApplicationController
 
   def index
     @products = @q.result(distinct: true)
-      .filter_product(params[:sort], params[:order])
-      .page(params[:page]).per Settings.product.pagination
-    return if @products.present?
-    flash[:danger] = t ".noproduct"
-    redirect_to_back
+                  .filter_product(params[:sort], params[:order])
+                  .page(params[:page]).per Settings.product.pagination
+    # return if @products.present?
+    # flash[:danger] = t ".noproduct"
+    # redirect_to products_path
   end
 
   def show; end
